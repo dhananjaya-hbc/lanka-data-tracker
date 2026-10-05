@@ -1,0 +1,60 @@
+name: Daily data collection
+
+on:
+  schedule:
+    - cron: "30 1 * * *" # 01:30 UTC = 07:00 Sri Lanka time
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-collect
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      # Each collector may fail independently; the others still save and commit.
+      - name: Collect weather
+        id: weather
+        continue-on-error: true
+        run: python3 collectors/weather.py
+
+      - name: Collect exchange rates
+        id: exchange_rates
+        continue-on-error: true
+        run: python3 collectors/exchange_rates.py
+
+      - name: Commit and push new data
+        env:
+          COMMIT_NAME: ${{ vars.COMMIT_NAME || 'github-actions[bot]' }}
+          COMMIT_EMAIL: ${{ vars.COMMIT_EMAIL || '41898282+github-actions[bot]@users.noreply.github.com' }}
+        run: |
+          git config user.name "$COMMIT_NAME"
+          git config user.email "$COMMIT_EMAIL"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "No new data; skipping commit."
+            exit 0
+          fi
+          git commit -m "data: daily update $(TZ=Asia/Colombo date +%F)"
+          for attempt in 1 2 3; do
+            git pull --rebase && git push && exit 0
+            echo "Push attempt $attempt failed; retrying in 10s"
+            sleep 10
+          done
+          exit 1
+
+      # Runs after the commit, so saved data is never lost, but still marks
+      # the run red so a broken source gets noticed.
+      - name: Report collector failures
+        if: steps.weather.outcome == 'failure' || steps.exchange_rates.outcome == 'failure'
+        run: |
+          echo "::error::weather=${{ steps.weather.outcome }}, exchange_rates=${{ steps.exchange_rates.outcome }}"
+          exit 1
