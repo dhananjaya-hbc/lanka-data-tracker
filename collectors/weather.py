@@ -7,17 +7,7 @@ import sys
 import urllib.parse
 from datetime import timedelta
 
-from common import append_rows, fetch_json, iso, log, sl_today
-
-CITIES = {
-    "Wellawaya": (6.7378, 81.1031),
-    "Colombo": (6.9271, 79.8612),
-    "Kandy": (7.2906, 80.6337),
-    "Galle": (6.0535, 80.2210),
-    "Jaffna": (9.6615, 80.0255),
-    "Nuwara Eliya": (6.9497, 80.7891),
-    "Trincomalee": (8.5874, 81.2152),
-}
+from common import CITIES, append_rows, fetch_json, iso, log, sl_today
 
 # Open-Meteo daily variable -> CSV column
 VARIABLES = {

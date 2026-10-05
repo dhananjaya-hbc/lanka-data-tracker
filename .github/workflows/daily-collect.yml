@@ -1,9 +1,16 @@
-name: Daily data collection
+name: Data collection
 
 on:
   schedule:
-    - cron: "30 1 * * *" # 01:30 UTC = 07:00 Sri Lanka time
+    - cron: "30 1 * * *"      # daily sources: 07:00 Sri Lanka time
+    - cron: "30 3-23/4 * * *" # snapshots: every 4 hours (01,05,09,13,17,21:00 Sri Lanka time)
   workflow_dispatch:
+    inputs:
+      group:
+        description: Which collectors to run
+        type: choice
+        options: [all, daily, snapshot]
+        default: all
 
 permissions:
   contents: write
@@ -11,6 +18,10 @@ permissions:
 concurrency:
   group: daily-collect
   cancel-in-progress: false
+
+env:
+  RUN_DAILY: ${{ github.event.schedule == '30 1 * * *' || (github.event_name == 'workflow_dispatch' && inputs.group != 'snapshot') }}
+  RUN_SNAPSHOT: ${{ github.event.schedule == '30 3-23/4 * * *' || (github.event_name == 'workflow_dispatch' && inputs.group != 'daily') }}
 
 jobs:
   collect:
@@ -21,29 +32,73 @@ jobs:
         uses: actions/checkout@v5
 
       # Each collector may fail independently; the others still save and commit.
-      - name: Collect weather
+      - name: Collect weather (daily)
         id: weather
+        if: env.RUN_DAILY == 'true'
         continue-on-error: true
         run: python3 collectors/weather.py
 
       - name: Collect exchange rates
         id: exchange_rates
+        if: env.RUN_DAILY == 'true'
         continue-on-error: true
         run: python3 collectors/exchange_rates.py
 
+      - name: Collect river discharge
+        id: river_discharge
+        if: env.RUN_DAILY == 'true'
+        continue-on-error: true
+        run: python3 collectors/river_discharge.py
+
+      - name: Collect weather snapshots
+        id: weather_snapshots
+        if: env.RUN_SNAPSHOT == 'true'
+        continue-on-error: true
+        run: python3 collectors/weather_snapshots.py
+
+      - name: Collect air quality
+        id: air_quality
+        if: env.RUN_SNAPSHOT == 'true'
+        continue-on-error: true
+        run: python3 collectors/air_quality.py
+
+      - name: Collect marine conditions
+        id: marine
+        if: env.RUN_SNAPSHOT == 'true'
+        continue-on-error: true
+        run: python3 collectors/marine.py
+
+      - name: Collect earthquakes
+        id: earthquakes
+        continue-on-error: true
+        run: python3 collectors/earthquakes.py
+
+      # One commit per changed data file.
       - name: Commit and push new data
         env:
           COMMIT_NAME: ${{ vars.COMMIT_NAME || 'github-actions[bot]' }}
           COMMIT_EMAIL: ${{ vars.COMMIT_EMAIL || '41898282+github-actions[bot]@users.noreply.github.com' }}
+          DAILY_SOURCES: " weather exchange_rates river_discharge "
         run: |
           git config user.name "$COMMIT_NAME"
           git config user.email "$COMMIT_EMAIL"
-          git add data/
-          if git diff --cached --quiet; then
+          changed=$(git status --porcelain --untracked-files=all -- data/ | awk '{print $NF}')
+          if [ -z "$changed" ]; then
             echo "No new data; skipping commit."
             exit 0
           fi
-          git commit -m "data: daily update $(TZ=Asia/Colombo date +%F)"
+          day=$(TZ=Asia/Colombo date +%F)
+          hour=$(TZ=Asia/Colombo date +%H:%M)
+          for f in $changed; do
+            name=$(basename "$f" .csv)
+            case "$DAILY_SOURCES" in
+              *" $name "*) stamp="$day" ;;
+              *) stamp="$day $hour" ;;
+            esac
+            git add "$f"
+            git commit -q -m "data: ${name//_/ } update $stamp"
+            echo "Committed $f"
+          done
           for attempt in 1 2 3; do
             git pull --rebase && git push && exit 0
             echo "Push attempt $attempt failed; retrying in 10s"
@@ -54,7 +109,14 @@ jobs:
       # Runs after the commit, so saved data is never lost, but still marks
       # the run red so a broken source gets noticed.
       - name: Report collector failures
-        if: steps.weather.outcome == 'failure' || steps.exchange_rates.outcome == 'failure'
+        env:
+          STEPS: ${{ toJSON(steps) }}
         run: |
-          echo "::error::weather=${{ steps.weather.outcome }}, exchange_rates=${{ steps.exchange_rates.outcome }}"
-          exit 1
+          python3 - <<'EOF'
+          import json, os, sys
+          outcomes = [s["outcome"] for s in json.loads(os.environ["STEPS"]).values()]
+          if "failure" in outcomes:
+              print("::error::One or more collectors failed; see the step logs above.")
+              sys.exit(1)
+          print("All collectors succeeded.")
+          EOF
