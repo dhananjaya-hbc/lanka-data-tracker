@@ -1,0 +1,443 @@
+year,indicator_id,indicator,value
+1990,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-3.71364846145228
+1991,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-6.60834436461149
+1992,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-4.6445676126182
+1993,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-3.69702621240226
+1994,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-6.46387915946705
+1995,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-5.90910994846491
+1996,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-4.91199982756748
+1997,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-2.61516855545627
+1998,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-1.44447657761179
+1999,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-3.57275187551122
+2000,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-6.28823142949348
+2001,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-1.36821186331088
+2002,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-1.42925945944237
+2003,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-0.374541248460878
+2004,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-3.1340311530145
+2005,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-2.66382240513017
+2006,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-5.29942775531871
+2007,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-4.33041626176129
+2008,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-9.54319542329735
+2009,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-0.510385718302903
+2010,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-1.83339431574737
+2011,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-6.81209765681019
+2012,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-5.69099820826854
+2013,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-3.30046822137757
+2014,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-2.40840557196081
+2015,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-2.21267766608825
+2016,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-1.97999493165089
+2017,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-2.4467643490753
+2018,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-2.96352841915887
+2019,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-2.07126631647205
+2020,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-1.40761495020573
+2021,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-3.70866603299245
+2022,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-1.95359411068218
+2023,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),1.71159541534782
+2024,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),1.21048332599166
+1990,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",400775817.9
+1991,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",442093994.1
+1992,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",547805053.7
+1993,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",632381958
+1994,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",715192443.8
+1995,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",800969017.959
+1996,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",843173016.3939
+1997,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",933731256.2051
+1998,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",1013337090.0168
+1999,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",1064301778.3232
+2000,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",1154285558.8842
+2001,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",1169810000
+2002,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",1296070000
+2003,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",1423470000
+2004,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",1573780000
+2005,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",1975536000
+2006,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",2166770000
+2007,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",2507300000
+2008,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",2924500000
+2009,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",3336700000
+2010,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",4123130000
+2011,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",5153010000
+2012,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",5999552324.37494
+2013,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",6422186627.14356
+2014,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",7036326550.64495
+2015,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",6999731474.7887
+2016,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",7261851525.12139
+2017,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",7190296015.03347
+2018,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",7043039552.3926
+2019,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",6748702044.3482
+2020,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",7140414362.13216
+2021,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",5521864470.5955
+2022,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",3819373806.84977
+2023,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",6022594532.62525
+2024,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",6721617581.91647
+1990,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",447030481.606109
+1991,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",724220186.327437
+1992,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",979865100.612891
+1993,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",1653805493.1912
+1994,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",2069716925.84899
+1995,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",2111952624.93954
+1996,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",1984681032.68698
+1997,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",2042319936.5303
+1998,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",1997795167.96533
+1999,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",1653729058.41689
+2000,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",1131355289.18666
+2001,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",1357451866.36814
+2002,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",1705155736.72707
+2003,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",2333781502.23926
+2004,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",2204868879.49586
+2005,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",2734967767.26121
+2006,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",2832098098.88232
+2007,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",3518418228.00438
+2008,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",2616559583.33783
+2009,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",5353610216.22721
+2010,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",7195358507.00001
+2011,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",6739196545.08981
+2012,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",7106460348.66884
+2013,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",7500000871.53903
+2014,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",8210750127.74159
+2015,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",7302096590.22385
+2016,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",6008199165.17799
+2017,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",7959047614.93675
+2018,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",6920825566.09992
+2019,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",7648305273.42442
+2020,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",5663994385.32784
+2021,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",3136991506.34787
+2022,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",1896231717.15846
+2023,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",4405117005.00662
+2024,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",6093946546.37437
+1990,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",21.495252052759
+1991,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",12.1856307214389
+1992,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",11.3834370512206
+1993,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",11.7467370174946
+1994,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",8.44871248698348
+1995,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",7.67484873449805
+1996,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",15.9358310447214
+1997,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",9.57369626405162
+1998,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",9.36424300683229
+1999,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",4.69170563048438
+2000,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",6.17627591012045
+2001,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",14.15845579912
+2002,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",9.55103167007251
+2003,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",6.31463787051174
+2004,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",7.57592582995856
+2005,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",11.6396860971118
+2006,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",10.0201836057035
+2007,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",15.8421114924843
+2008,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",22.5644955300126
+2009,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",3.46496322106074
+2010,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",6.2176488930462
+2011,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",6.7167684358854
+2012,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",7.54291373239437
+2013,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",6.90845034828452
+2014,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",3.1790022823606
+2015,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",3.76836783062096
+2016,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",3.9588884659307
+2017,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",7.70413767850602
+2018,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",2.135037737132
+2019,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",3.52839358231811
+2020,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",6.15394508391738
+2021,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",7.01478071238195
+2022,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",49.7211021114327
+2023,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",16.5411742279832
+2024,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",-0.42936004906973
+2025,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",-4.76386036960983
+1990,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),30.1808045148298
+1991,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),28.7410868952181
+1992,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),31.7703740803183
+1993,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),33.8010068759821
+1994,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),33.8128837957878
+1995,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),35.597629130901
+1996,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),34.9733377770372
+1997,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),36.5381180807663
+1998,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),36.2438186772706
+1999,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),35.4837047170656
+2000,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),39.015700886425
+2001,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),37.3311884768914
+2002,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),34.9133301978336
+2003,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),34.6535028324228
+2004,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),35.3309027324412
+2005,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),32.3368729874893
+2006,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),30.1285270937972
+2007,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),29.1149996870361
+2008,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),24.8414870988205
+2009,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),21.328366243783
+2015,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),19.893383820467
+2016,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),19.824036042668
+2017,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),20.2242000359935
+2018,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),21.4462486145463
+2019,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),21.8235309246323
+2020,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),15.4576399170356
+2021,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),16.9214215897796
+2022,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),21.5595624612904
+2023,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),20.5995283672112
+2024,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),19.7559774138192
+2025,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),18.9673796128721
+1990,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),38.0631106580812
+1991,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),38.8548254978582
+1992,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),41.03338247708
+1993,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),43.3465114649745
+1994,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),45.617906901244
+1995,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),46.0374199577101
+1996,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),43.9006259373438
+1997,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),43.599435228784
+1998,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),42.2511704483166
+1999,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),43.2677736325718
+2000,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),49.620740818488
+2001,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),43.5674130558662
+2002,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),41.4218015848181
+2003,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),40.6827444981201
+2004,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),44.1520421686776
+2005,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),41.267099970564
+2006,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),41.1326513945037
+2007,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),39.491511973103
+2008,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),38.5275565094015
+2009,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),27.8207752870405
+2015,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),27.0245869884029
+2016,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),26.6475009824081
+2017,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),26.9162097641559
+2018,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),28.3631481374973
+2019,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),27.6019929606444
+2020,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),21.6314789397836
+2021,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),24.3074247397182
+2022,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),25.1230455566456
+2023,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),22.7481397523022
+2024,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),22.3636324192921
+2025,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),22.8416230396327
+1990,NY.GDP.MKTP.CD,GDP (current US$),8032551173.24014
+1991,NY.GDP.MKTP.CD,GDP (current US$),9000362581.58086
+1992,NY.GDP.MKTP.CD,GDP (current US$),9703011635.86585
+1993,NY.GDP.MKTP.CD,GDP (current US$),10338679635.7616
+1994,NY.GDP.MKTP.CD,GDP (current US$),11717604208.8223
+1995,NY.GDP.MKTP.CD,GDP (current US$),13029697560.9756
+1996,NY.GDP.MKTP.CD,GDP (current US$),13897738375.2488
+1997,NY.GDP.MKTP.CD,GDP (current US$),15091913883.7091
+1998,NY.GDP.MKTP.CD,GDP (current US$),15760736956.1852
+1999,NY.GDP.MKTP.CD,GDP (current US$),15711933513.2831
+2000,NY.GDP.MKTP.CD,GDP (current US$),16595882818.6857
+2001,NY.GDP.MKTP.CD,GDP (current US$),15749753804.8344
+2002,NY.GDP.MKTP.CD,GDP (current US$),16536535647.0834
+2003,NY.GDP.MKTP.CD,GDP (current US$),18881765437.2151
+2004,NY.GDP.MKTP.CD,GDP (current US$),20662525941.2985
+2005,NY.GDP.MKTP.CD,GDP (current US$),24405791044.7761
+2006,NY.GDP.MKTP.CD,GDP (current US$),28267410542.5164
+2007,NY.GDP.MKTP.CD,GDP (current US$),32350238760.4239
+2008,NY.GDP.MKTP.CD,GDP (current US$),40713826215.0093
+2009,NY.GDP.MKTP.CD,GDP (current US$),42066224093.0065
+2010,NY.GDP.MKTP.CD,GDP (current US$),58636049581.1712
+2011,NY.GDP.MKTP.CD,GDP (current US$),67753285882.299
+2012,NY.GDP.MKTP.CD,GDP (current US$),70447216891.3366
+2013,NY.GDP.MKTP.CD,GDP (current US$),76976204074.978
+2014,NY.GDP.MKTP.CD,GDP (current US$),82531125461.843
+2015,NY.GDP.MKTP.CD,GDP (current US$),85090300895.6546
+2016,NY.GDP.MKTP.CD,GDP (current US$),88000210878.1236
+2017,NY.GDP.MKTP.CD,GDP (current US$),94369350439.4732
+2018,NY.GDP.MKTP.CD,GDP (current US$),94450015982.806
+2019,NY.GDP.MKTP.CD,GDP (current US$),88998706177.9986
+2020,NY.GDP.MKTP.CD,GDP (current US$),84335574372.2997
+2021,NY.GDP.MKTP.CD,GDP (current US$),88556699052.2008
+2022,NY.GDP.MKTP.CD,GDP (current US$),74143020303.663
+2023,NY.GDP.MKTP.CD,GDP (current US$),84080307355.5983
+2024,NY.GDP.MKTP.CD,GDP (current US$),99616111265.7633
+2025,NY.GDP.MKTP.CD,GDP (current US$),108825231671.196
+1990,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),6.39999531084838
+1991,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),4.59998724404535
+1992,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),4.39999125181939
+1993,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),6.90006325149474
+1994,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),5.59991872510166
+1995,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),5.5000852341585
+1996,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),3.79996720568178
+1997,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),6.40539969571286
+1998,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),4.69842304772052
+1999,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),4.30054049813373
+2000,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),6.00003315828934
+2001,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),-1.54540813366026
+2002,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),3.96467568513113
+2003,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),5.9402690780223
+2004,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),5.44506127885352
+2005,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),6.24174804376447
+2006,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),7.66829190107919
+2007,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),6.79682611892866
+2008,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),5.95008814473897
+2009,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),3.53891205317842
+2010,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),8.01596737040464
+2011,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),8.66948301160571
+2012,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),8.6321813769906
+2013,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),4.0517463303875
+2014,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),6.37797889684965
+2015,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),4.20595547501601
+2016,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),5.05362488993089
+2017,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),6.46068127080994
+2018,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),2.31008425504933
+2019,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),-0.220483886824823
+2020,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),-4.62451503712715
+2021,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),4.2074764950026
+2022,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),-7.34919311146656
+2023,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),-2.0289296690344
+2024,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),4.99241614398109
+2025,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),4.9534339114043
+1990,NY.GDP.PCAP.CD,GDP per capita (current US$),491.213686238493
+1991,NY.GDP.PCAP.CD,GDP per capita (current US$),546.292515570886
+1992,NY.GDP.PCAP.CD,GDP per capita (current US$),579.655117618283
+1993,NY.GDP.PCAP.CD,GDP per capita (current US$),607.231847102846
+1994,NY.GDP.PCAP.CD,GDP per capita (current US$),678.268012020205
+1995,NY.GDP.PCAP.CD,GDP per capita (current US$),741.838255293455
+1996,NY.GDP.PCAP.CD,GDP per capita (current US$),776.192371057587
+1997,NY.GDP.PCAP.CD,GDP per capita (current US$),827.035756058631
+1998,NY.GDP.PCAP.CD,GDP per capita (current US$),847.533577843861
+1999,NY.GDP.PCAP.CD,GDP per capita (current US$),829.356379527539
+2000,NY.GDP.PCAP.CD,GDP per capita (current US$),860.199884304769
+2001,NY.GDP.PCAP.CD,GDP per capita (current US$),803.544026627385
+2002,NY.GDP.PCAP.CD,GDP per capita (current US$),834.936014905338
+2003,NY.GDP.PCAP.CD,GDP per capita (current US$),946.382255128072
+2004,NY.GDP.PCAP.CD,GDP per capita (current US$),1028.62068132555
+2005,NY.GDP.PCAP.CD,GDP per capita (current US$),1207.21994764165
+2006,NY.GDP.PCAP.CD,GDP per capita (current US$),1388.89739119932
+2007,NY.GDP.PCAP.CD,GDP per capita (current US$),1578.63451125392
+2008,NY.GDP.PCAP.CD,GDP per capita (current US$),1973.58476901287
+2009,NY.GDP.PCAP.CD,GDP per capita (current US$),2026.65939950702
+2010,NY.GDP.PCAP.CD,GDP per capita (current US$),2808.36245207687
+2011,NY.GDP.PCAP.CD,GDP per capita (current US$),3224.95745082305
+2012,NY.GDP.PCAP.CD,GDP per capita (current US$),3327.77612404326
+2013,NY.GDP.PCAP.CD,GDP per capita (current US$),3739.43182292825
+2014,NY.GDP.PCAP.CD,GDP per capita (current US$),3972.04377042271
+2015,NY.GDP.PCAP.CD,GDP per capita (current US$),4057.71582716521
+2016,NY.GDP.PCAP.CD,GDP per capita (current US$),4149.19189391879
+2017,NY.GDP.PCAP.CD,GDP per capita (current US$),4398.88828786059
+2018,NY.GDP.PCAP.CD,GDP per capita (current US$),4358.56095905888
+2019,NY.GDP.PCAP.CD,GDP per capita (current US$),4081.94772178134
+2020,NY.GDP.PCAP.CD,GDP per capita (current US$),3847.60136741182
+2021,NY.GDP.PCAP.CD,GDP per capita (current US$),3996.96240531688
+2022,NY.GDP.PCAP.CD,GDP per capita (current US$),3342.63650438046
+2023,NY.GDP.PCAP.CD,GDP per capita (current US$),3815.41531767474
+2024,NY.GDP.PCAP.CD,GDP per capita (current US$),4545.36006870612
+2025,NY.GDP.PCAP.CD,GDP per capita (current US$),5002.07904353724
+1990,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",40.0629166666667
+1991,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",41.3715
+1992,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",43.829625
+1993,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",48.3221675
+1994,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",49.4151416666667
+1995,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",51.2515891666667
+1996,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",55.2714441666667
+1997,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",58.994605
+1998,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",64.4501183333333
+1999,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",70.63545
+2000,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",77.0051166666667
+2001,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",89.3830133333334
+2002,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",95.662065
+2003,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",96.5209508333333
+2004,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",101.1944575
+2005,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",100.498051666667
+2006,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",103.914445833333
+2007,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",110.623233333333
+2008,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",108.333762719298
+2009,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",114.944783333333
+2010,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",113.064480448821
+2011,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",110.565207851396
+2012,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",127.60335350681
+2013,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",129.069030932888
+2014,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",130.564685218829
+2015,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",135.856912797089
+2016,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",145.581667492026
+2017,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",152.446413948767
+2018,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",162.464858736778
+2019,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",178.744925045848
+2020,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",185.592557772213
+2021,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",198.764316844656
+2022,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",322.632674256475
+2023,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",327.506533333333
+1991,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",14.661
+1992,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",14.22
+1993,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",13.82
+1994,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",13.03
+1995,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",12.27
+1996,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",11.35
+1997,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",10.6
+1998,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",9.17
+1999,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",8.88
+2000,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",7.74
+2001,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",7.9
+2002,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",8.76
+2003,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",8.22
+2004,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",8.38
+2005,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",7.67
+2006,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",6.5
+2007,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",5.97
+2008,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",5.22
+2009,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",5.85
+2010,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",4.784
+2011,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",4.118
+2012,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",3.88
+2013,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",4.186
+2014,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",4.157
+2015,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",4.519
+2016,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",4.242
+2017,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",4.046
+2018,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",4.318
+2019,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",4.67
+2020,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",5.364
+2021,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",4.981
+2022,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",4.528
+2023,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",4.528
+2024,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",4.239
+2025,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",4.005
+1990,SP.POP.TOTL,"Population, total",16352458
+1991,SP.POP.TOTL,"Population, total",16475354
+1992,SP.POP.TOTL,"Population, total",16739284
+1993,SP.POP.TOTL,"Population, total",17025918
+1994,SP.POP.TOTL,"Population, total",17275773
+1995,SP.POP.TOTL,"Population, total",17564068
+1996,SP.POP.TOTL,"Population, total",17905018
+1997,SP.POP.TOTL,"Population, total",18248200
+1998,SP.POP.TOTL,"Population, total",18596003
+1999,SP.POP.TOTL,"Population, total",18944731
+2000,SP.POP.TOTL,"Population, total",19293054
+2001,SP.POP.TOTL,"Population, total",19600362
+2002,SP.POP.TOTL,"Population, total",19805752
+2003,SP.POP.TOTL,"Population, total",19951521
+2004,SP.POP.TOTL,"Population, total",20087605
+2005,SP.POP.TOTL,"Population, total",20216524
+2006,SP.POP.TOTL,"Population, total",20352411
+2007,SP.POP.TOTL,"Population, total",20492545
+2008,SP.POP.TOTL,"Population, total",20629378
+2009,SP.POP.TOTL,"Population, total",20756435
+2010,SP.POP.TOTL,"Population, total",20879089
+2011,SP.POP.TOTL,"Population, total",21009048
+2012,SP.POP.TOTL,"Population, total",21169458
+2013,SP.POP.TOTL,"Population, total",20585000
+2014,SP.POP.TOTL,"Population, total",20778000
+2015,SP.POP.TOTL,"Population, total",20970000
+2016,SP.POP.TOTL,"Population, total",21209000
+2017,SP.POP.TOTL,"Population, total",21453000
+2018,SP.POP.TOTL,"Population, total",21670000
+2019,SP.POP.TOTL,"Population, total",21803000
+2020,SP.POP.TOTL,"Population, total",21919000
+2021,SP.POP.TOTL,"Population, total",22156000
+2022,SP.POP.TOTL,"Population, total",22181000
+2023,SP.POP.TOTL,"Population, total",22037000
+2024,SP.POP.TOTL,"Population, total",21916000
+2025,SP.POP.TOTL,"Population, total",21756000
+1995,ST.INT.ARVL,"International tourism, number of arrivals",414000
+1996,ST.INT.ARVL,"International tourism, number of arrivals",315000
+1997,ST.INT.ARVL,"International tourism, number of arrivals",384000
+1998,ST.INT.ARVL,"International tourism, number of arrivals",409000
+1999,ST.INT.ARVL,"International tourism, number of arrivals",465000
+2000,ST.INT.ARVL,"International tourism, number of arrivals",445000
+2001,ST.INT.ARVL,"International tourism, number of arrivals",397000
+2002,ST.INT.ARVL,"International tourism, number of arrivals",457000
+2003,ST.INT.ARVL,"International tourism, number of arrivals",583000
+2004,ST.INT.ARVL,"International tourism, number of arrivals",681000
+2005,ST.INT.ARVL,"International tourism, number of arrivals",669000
+2006,ST.INT.ARVL,"International tourism, number of arrivals",689000
+2007,ST.INT.ARVL,"International tourism, number of arrivals",592000
+2008,ST.INT.ARVL,"International tourism, number of arrivals",526000
+2009,ST.INT.ARVL,"International tourism, number of arrivals",538000
+2010,ST.INT.ARVL,"International tourism, number of arrivals",766000
+2011,ST.INT.ARVL,"International tourism, number of arrivals",976000
+2012,ST.INT.ARVL,"International tourism, number of arrivals",1133000
+2013,ST.INT.ARVL,"International tourism, number of arrivals",1415000
+2014,ST.INT.ARVL,"International tourism, number of arrivals",1665000
+2015,ST.INT.ARVL,"International tourism, number of arrivals",1993000
+2016,ST.INT.ARVL,"International tourism, number of arrivals",2168000
+2017,ST.INT.ARVL,"International tourism, number of arrivals",2248000
+2018,ST.INT.ARVL,"International tourism, number of arrivals",2521000
+2019,ST.INT.ARVL,"International tourism, number of arrivals",2027000
+2020,ST.INT.ARVL,"International tourism, number of arrivals",540000
