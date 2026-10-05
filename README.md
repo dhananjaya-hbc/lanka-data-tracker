@@ -9,7 +9,11 @@ Nobody has to do anything by hand.
 
 ## Datasets
 
-Cities: Wellawaya, Colombo, Kandy, Galle, Jaffna, Nuwara Eliya, Trincomalee.
+Cities (26): all 25 district capitals (Colombo, Gampaha, Kalutara, Kandy, Matale,
+Nuwara Eliya, Galle, Matara, Hambantota, Jaffna, Kilinochchi, Mannar, Vavuniya,
+Mullaitivu, Batticaloa, Ampara, Trincomalee, Kurunegala, Puttalam, Anuradhapura,
+Polonnaruwa, Badulla, Monaragala, Ratnapura, Kegalle) plus Wellawaya. City names
+match the `district` column in `dengue.csv`, so the datasets join directly.
 
 | File | Contents | Frequency | Key | Source |
 |---|---|---|---|---|

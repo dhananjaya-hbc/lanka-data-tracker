@@ -23,7 +23,8 @@ DATA_DIR = os.path.join(REPO_ROOT, "data")
 
 USER_AGENT = "lanka-data-tracker/1.0 (+https://github.com/dhananjaya-hbc/lanka-data-tracker)"
 
-# City -> (latitude, longitude), shared by the land-based collectors.
+# City -> (latitude, longitude), shared by the land-based collectors:
+# every district capital, plus Wellawaya.
 CITIES = {
     "Wellawaya": (6.7378, 81.1031),
     "Colombo": (6.9271, 79.8612),
@@ -32,6 +33,25 @@ CITIES = {
     "Jaffna": (9.6615, 80.0255),
     "Nuwara Eliya": (6.9497, 80.7891),
     "Trincomalee": (8.5874, 81.2152),
+    "Gampaha": (7.0917, 79.9997),
+    "Kalutara": (6.5854, 79.9607),
+    "Matale": (7.4675, 80.6234),
+    "Matara": (5.9549, 80.5550),
+    "Hambantota": (6.1241, 81.1185),
+    "Kilinochchi": (9.3803, 80.3770),
+    "Mannar": (8.9810, 79.9044),
+    "Vavuniya": (8.7514, 80.4971),
+    "Mullaitivu": (9.2671, 80.8142),
+    "Batticaloa": (7.7310, 81.6747),
+    "Ampara": (7.2975, 81.6820),
+    "Kurunegala": (7.4863, 80.3623),
+    "Puttalam": (8.0362, 79.8283),
+    "Anuradhapura": (8.3114, 80.4037),
+    "Polonnaruwa": (7.9403, 81.0188),
+    "Badulla": (6.9934, 81.0550),
+    "Monaragala": (6.8728, 81.3507),
+    "Ratnapura": (6.6828, 80.3992),
+    "Kegalle": (7.2513, 80.3464),
 }
 
 
