@@ -4,8 +4,10 @@ Standard library only.
 """
 
 import csv
+import html
 import json
 import os
+import re
 import sys
 import time
 import urllib.error
@@ -54,16 +56,17 @@ def fetch_open_meteo(base_url, points, **params):
     return data if isinstance(data, list) else [data]
 
 
-def fetch_json(url, retries=3, timeout=30, backoff=2.0):
-    """GET a URL and parse JSON. On failure, retry `retries` times with
-    exponential backoff before raising the last error."""
+def fetch_bytes(url, data=None, retries=3, timeout=30, backoff=2.0):
+    """GET (or POST, if `data` is given) a URL and return the body as bytes.
+    On failure, retry `retries` times with exponential backoff before raising
+    the last error."""
     last_err = None
     for attempt in range(1, retries + 2):
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+            req = urllib.request.Request(url, data=data, headers={"User-Agent": USER_AGENT})
             with urllib.request.urlopen(req, timeout=timeout) as resp:
-                return json.load(resp)
-        except (urllib.error.URLError, TimeoutError, ConnectionError, json.JSONDecodeError) as e:
+                return resp.read()
+        except (urllib.error.URLError, TimeoutError, ConnectionError) as e:
             last_err = e
             if attempt > retries:
                 break
@@ -71,6 +74,24 @@ def fetch_json(url, retries=3, timeout=30, backoff=2.0):
             log(f"  request failed (attempt {attempt}/{retries + 1}): {e}; retrying in {wait:.0f}s")
             time.sleep(wait)
     raise RuntimeError(f"giving up on {url}: {last_err}")
+
+
+def fetch_json(url, data=None, **kwargs):
+    """Fetch a URL (POST if `data` is given) and parse the body as JSON."""
+    return json.loads(fetch_bytes(url, data=data, **kwargs))
+
+
+def fetch_text(url, **kwargs):
+    """Fetch a URL and decode the body as UTF-8 text (e.g. an HTML page)."""
+    return fetch_bytes(url, **kwargs).decode("utf-8", errors="replace")
+
+
+def html_to_text(page):
+    """Flatten HTML to text with " | " between elements, so values in
+    adjacent tags stay separable by a regex."""
+    page = re.sub(r"<(script|style)\b.*?</\1>", "", page, flags=re.S | re.I)
+    text = html.unescape(re.sub(r"<[^>]+>", "|", page))
+    return re.sub(r"\s*\|[\s|]*", " | ", text)
 
 
 def append_rows(filename, fieldnames, rows, key_fields):
@@ -102,6 +123,40 @@ def append_rows(filename, fieldnames, rows, key_fields):
                 writer.writeheader()
             writer.writerows(new_rows)
     return len(new_rows)
+
+
+def upsert_rows(filename, fieldnames, rows, key_fields):
+    """Like append_rows, but a row whose key already exists replaces the stored
+    row when any value differs (for sources that revise published figures).
+    Existing row order is kept and new rows go at the end.
+    Returns (added, updated)."""
+    path = os.path.join(DATA_DIR, filename)
+    os.makedirs(DATA_DIR, exist_ok=True)
+
+    stored = {}
+    if os.path.exists(path) and os.path.getsize(path) > 0:
+        with open(path, newline="", encoding="utf-8") as f:
+            for r in csv.DictReader(f):
+                stored[tuple(r[k] for k in key_fields)] = r
+
+    added = updated = 0
+    for r in rows:
+        r = {k: "" if r[k] is None else str(r[k]) for k in fieldnames}
+        key = tuple(r[k] for k in key_fields)
+        if key not in stored:
+            added += 1
+        elif stored[key] != r:
+            updated += 1
+        else:
+            continue
+        stored[key] = r
+
+    if added or updated:
+        with open(path, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(stored.values())
+    return added, updated
 
 
 def collect_current(label, filename, base_url, points, variables, location_field="city"):

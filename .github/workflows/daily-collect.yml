@@ -26,7 +26,7 @@ env:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - name: Check out repository
         uses: actions/checkout@v5
@@ -50,6 +50,30 @@ jobs:
         continue-on-error: true
         run: python3 collectors/river_discharge.py
 
+      - name: Collect solar radiation
+        id: solar
+        if: env.RUN_DAILY == 'true'
+        continue-on-error: true
+        run: python3 collectors/solar.py
+
+      - name: Collect fuel prices
+        id: fuel_prices
+        if: env.RUN_DAILY == 'true'
+        continue-on-error: true
+        run: python3 collectors/fuel_prices.py
+
+      - name: Collect World Bank indicators
+        id: world_bank
+        if: env.RUN_DAILY == 'true'
+        continue-on-error: true
+        run: python3 collectors/world_bank.py
+
+      - name: Collect dengue cases
+        id: dengue
+        if: env.RUN_DAILY == 'true'
+        continue-on-error: true
+        run: python3 collectors/dengue.py
+
       - name: Collect weather snapshots
         id: weather_snapshots
         if: env.RUN_SNAPSHOT == 'true'
@@ -68,6 +92,18 @@ jobs:
         continue-on-error: true
         run: python3 collectors/marine.py
 
+      - name: Collect CBSL rates
+        id: cbsl_rates
+        if: env.RUN_SNAPSHOT == 'true'
+        continue-on-error: true
+        run: python3 collectors/cbsl_rates.py
+
+      - name: Collect CSE market data
+        id: cse_market
+        if: env.RUN_SNAPSHOT == 'true'
+        continue-on-error: true
+        run: python3 collectors/cse_market.py
+
       - name: Collect earthquakes
         id: earthquakes
         continue-on-error: true
@@ -78,7 +114,7 @@ jobs:
         env:
           COMMIT_NAME: ${{ vars.COMMIT_NAME || 'github-actions[bot]' }}
           COMMIT_EMAIL: ${{ vars.COMMIT_EMAIL || '41898282+github-actions[bot]@users.noreply.github.com' }}
-          DAILY_SOURCES: " weather exchange_rates river_discharge "
+          DAILY_SOURCES: " weather exchange_rates river_discharge solar fuel_prices economy_indicators dengue "
         run: |
           git config user.name "$COMMIT_NAME"
           git config user.email "$COMMIT_EMAIL"
