@@ -6,7 +6,7 @@ Updated automatically by the data workflow after validation.
 |---|---:|---|---|---|
 | `weather.csv` | 26 | 2026-10-05 | daily | ✅ OK |
 | `solar.csv` | 26 | 2026-10-05 | daily | ✅ OK |
-| `exchange_rates.csv` | 8 | 2026-10-05 | daily | ✅ OK |
+| `exchange_rates.csv` | 16 | 2026-10-06 | daily | ✅ OK |
 | `river_discharge.csv` | 8 | 2026-10-05 | daily | ✅ OK |
 | `weather_snapshots.csv` | 111 | 2026-10-06T09:30 | every 4 h | ✅ OK |
 | `air_quality.csv` | 85 | 2026-10-06T09:30 | every 4 h | ✅ OK |
