@@ -1,0 +1,113 @@
+name: Forecasts
+
+on:
+  # Predict after each data collection run (only does work when there is new data).
+  workflow_run:
+    workflows: ["Data collection"]
+    types: [completed]
+  schedule:
+    - cron: "30 3 * * 0" # weekly retrain: Sunday 09:00 Sri Lanka time
+  workflow_dispatch:
+    inputs:
+      retrain:
+        description: Retrain the models before predicting
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: forecasts
+  cancel-in-progress: false
+
+jobs:
+  forecast:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion != 'cancelled'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+        with:
+          ref: main
+
+      # Model files are kept in the Actions cache rather than git (they would
+      # add ~90 MB a year to the repository). If evicted, they are retrained.
+      - name: Restore models
+        uses: actions/cache/restore@v4
+        with:
+          path: models/*.joblib
+          key: models-${{ github.run_id }}
+          restore-keys: models-
+
+      - name: Check for new data
+        id: check
+        run: |
+          python3 forecasting/needs_update.py | tee -a "$GITHUB_OUTPUT"
+          if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ inputs.retrain }}" = "true" ]; then
+            echo "train=true" >> "$GITHUB_OUTPUT"
+            echo "predict=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set up Python
+        if: steps.check.outputs.predict == 'true' || steps.check.outputs.train == 'true'
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: forecasting/requirements.txt
+
+      - name: Install dependencies
+        if: steps.check.outputs.predict == 'true' || steps.check.outputs.train == 'true'
+        run: pip install -r forecasting/requirements.txt
+
+      - name: Retrain models
+        if: steps.check.outputs.train == 'true'
+        run: python forecasting/train.py
+
+      - name: Save models
+        if: steps.check.outputs.train == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: models/*.joblib
+          key: models-${{ github.run_id }}
+
+      - name: Publish forecasts
+        if: steps.check.outputs.predict == 'true' || steps.check.outputs.train == 'true'
+        run: python forecasting/predict.py
+
+      - name: Commit and push
+        env:
+          COMMIT_NAME: ${{ vars.COMMIT_NAME || 'github-actions[bot]' }}
+          COMMIT_EMAIL: ${{ vars.COMMIT_EMAIL || '41898282+github-actions[bot]@users.noreply.github.com' }}
+          TZ: Asia/Colombo
+        run: |
+          git config user.name "$COMMIT_NAME"
+          git config user.email "$COMMIT_EMAIL"
+          day=$(date +%F)
+          commit() { # <message> <paths...>
+            msg=$1; shift
+            for path in "$@"; do [ -e "$path" ] && git add -- "$path"; done
+            git diff --cached --quiet || git commit -q -m "$msg"
+          }
+          commit "models: weekly retrain $day" models/metrics.json FORECASTS.md
+          commit "forecast: weather $day" data/forecasts_weather.csv
+          commit "forecast: dengue $day" data/forecasts_dengue.csv
+          if [ -z "$(git log origin/main..HEAD --oneline)" ]; then
+            echo "Nothing new to commit."
+            exit 0
+          fi
+          for attempt in 1 2 3; do
+            if ! git pull --rebase; then
+              # A conflicting change landed first. Give up cleanly; the next run
+              # re-collects (collectors only add what is missing).
+              git rebase --abort || true
+              echo "::error::Rebase conflict with newer commits; this run's data was not pushed"
+              exit 1
+            fi
+            git push && exit 0
+            echo "Push attempt $attempt failed; retrying in 10s"
+            sleep 10
+          done
+          exit 1
