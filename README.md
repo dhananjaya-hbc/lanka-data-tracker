@@ -1,11 +1,15 @@
 # lanka-data-tracker
 
 [![Data collection](https://github.com/dhananjaya-hbc/lanka-data-tracker/actions/workflows/daily-collect.yml/badge.svg)](https://github.com/dhananjaya-hbc/lanka-data-tracker/actions/workflows/daily-collect.yml)
+[![Tests](https://github.com/dhananjaya-hbc/lanka-data-tracker/actions/workflows/tests.yml/badge.svg)](https://github.com/dhananjaya-hbc/lanka-data-tracker/actions/workflows/tests.yml)
+[![Open the dashboard](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://lanka-data-tracker-qmeq7gejtnaw6nyhu5jnoz.streamlit.app)
 
 An open, self-updating dataset of Sri Lankan data. A GitHub Actions workflow fetches
 the latest values from free public APIs every morning (daily sources) and every 4 hours
 (snapshots), appends them to CSV files in [`data/`](data/), and commits the result.
 Nobody has to do anything by hand.
+
+**Live dashboard:** [lanka-data-tracker-qmeq7gejtnaw6nyhu5jnoz.streamlit.app](https://lanka-data-tracker-qmeq7gejtnaw6nyhu5jnoz.streamlit.app)
 
 **Data health:** see [`STATUS.md`](STATUS.md) for every dataset's latest data and
 whether it is up to date.
@@ -212,7 +216,8 @@ pip install -r dashboard/requirements.txt
 streamlit run dashboard/app.py
 ```
 
-To publish it free on [Streamlit Community Cloud](https://share.streamlit.io): sign in
+It is live at [lanka-data-tracker-qmeq7gejtnaw6nyhu5jnoz.streamlit.app](https://lanka-data-tracker-qmeq7gejtnaw6nyhu5jnoz.streamlit.app). To publish your own copy free on
+[Streamlit Community Cloud](https://share.streamlit.io): sign in
 with GitHub, choose **Create app**, pick this repository, branch `main` and main file
 `dashboard/app.py`. The app redeploys on every push, so it always shows the latest data.
 
