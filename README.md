@@ -7,6 +7,9 @@ the latest values from free public APIs every morning (daily sources) and every 
 (snapshots), appends them to CSV files in [`data/`](data/), and commits the result.
 Nobody has to do anything by hand.
 
+**Data health:** see [`STATUS.md`](STATUS.md) for every dataset's latest data and
+whether it is up to date.
+
 ## Datasets
 
 Cities (26): all 25 district capitals (Colombo, Gampaha, Kalutara, Kandy, Matale,
@@ -128,6 +131,12 @@ Commit messages: `data: <source> update YYYY-MM-DD` for daily sources and
   (CPC's full history) fill in past data on their first run.
 - **Independent sources:** if one source fails, the others still save and commit.
   The run is marked failed afterwards so the problem is visible.
+- **Validation:** before committing, [`collectors/validate.py`](collectors/validate.py)
+  checks every file: header unchanged, unique keys, and for new or changed rows
+  plausible ranges (e.g. 5–45 °C), cross-field rules (min ≤ max temperature, TT buy
+  ≤ sell) and jump limits (e.g. USD/LKR moving >15% in a day). A file that fails is
+  reverted, so bad data is never committed, and the run is marked failed.
+  It then writes [`STATUS.md`](STATUS.md), flagging any source that has gone stale.
 - **One commit per source:** each changed CSV gets its own commit; files with no
   new rows get no commit.
 - **Safe pushes:** a concurrency group prevents overlapping runs, and the job runs
@@ -162,6 +171,8 @@ collectors/
   fuel_prices.py        CPC fuel prices
   world_bank.py         World Bank macro indicators
   dengue.py             NDCU weekly dengue reports (includes a small PDF text reader)
+  validate.py           data validation + STATUS.md
+  backfill.py           one-off historical backfill (run manually)
   weather_snapshots.py  4-hourly weather
   air_quality.py        4-hourly air quality
   marine.py             4-hourly sea conditions
@@ -175,8 +186,8 @@ data/                   the datasets (CSV), append-only
 
 ## Roadmap
 
-- [ ] **Validation:** schema and range checks (e.g. temperature bounds, positive
-      rates, no gaps in dates) that run before every commit, plus a data-quality report.
+- [x] **Validation:** schema, range, cross-field and jump checks before every
+      commit, plus a data-health report ([`STATUS.md`](STATUS.md)).
 - [ ] **Streamlit dashboard:** interactive charts of weather trends per city and
       LKR exchange-rate history.
 - [ ] **Forecasting models:** next-day temperature/rainfall and exchange-rate
@@ -184,6 +195,11 @@ data/                   the datasets (CSV), append-only
       latest data and publishes metrics.
 - [ ] More sources: reservoir levels (Irrigation Department), forecast-vs-actual
       weather archive, tourist arrivals (SLTDA).
+
+## License
+
+The code is released under the [MIT License](LICENSE). The datasets remain under
+their sources' terms, listed below.
 
 ## Data licensing
 

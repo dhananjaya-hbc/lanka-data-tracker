@@ -109,7 +109,13 @@ jobs:
         continue-on-error: true
         run: python3 collectors/earthquakes.py
 
-      # One commit per changed data file.
+      # Checks new rows; reverts any file that fails and writes STATUS.md.
+      - name: Validate data
+        id: validate
+        continue-on-error: true
+        run: python3 collectors/validate.py
+
+      # One commit per changed data file, plus STATUS.md.
       - name: Commit and push new data
         env:
           COMMIT_NAME: ${{ vars.COMMIT_NAME || 'github-actions[bot]' }}
@@ -121,7 +127,7 @@ jobs:
         run: |
           git config user.name "$COMMIT_NAME"
           git config user.email "$COMMIT_EMAIL"
-          changed=$(git status --porcelain --untracked-files=all -- data/ | awk '{print $NF}')
+          changed=$(git status --porcelain --untracked-files=all -- data/ STATUS.md | awk '{print $NF}')
           if [ -z "$changed" ]; then
             echo "No new data; skipping commit."
             exit 0
@@ -135,7 +141,11 @@ jobs:
               *) stamp="$day $hour" ;;
             esac
             git add "$f"
-            git commit -q -m "data: ${name//_/ } update $stamp"
+            if [ "$f" = "STATUS.md" ]; then
+              git commit -q -m "status: data health $day $hour"
+            else
+              git commit -q -m "data: ${name//_/ } update $stamp"
+            fi
             echo "Committed $f"
           done
           for attempt in 1 2 3; do
