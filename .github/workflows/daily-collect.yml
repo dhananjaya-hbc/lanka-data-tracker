@@ -114,6 +114,9 @@ jobs:
         env:
           COMMIT_NAME: ${{ vars.COMMIT_NAME || 'github-actions[bot]' }}
           COMMIT_EMAIL: ${{ vars.COMMIT_EMAIL || '41898282+github-actions[bot]@users.noreply.github.com' }}
+          # Stamp commits in Sri Lanka time so they land on the right day in
+          # the contribution graph (the runner's default is UTC).
+          TZ: Asia/Colombo
           DAILY_SOURCES: " weather exchange_rates river_discharge solar fuel_prices economy_indicators dengue "
         run: |
           git config user.name "$COMMIT_NAME"

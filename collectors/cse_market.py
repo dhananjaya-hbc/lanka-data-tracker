@@ -3,14 +3,16 @@ S&P Sri Lanka 20 indices plus turnover, share volume and trade count.
 
 Uses the JSON endpoints behind cse.lk (unofficial, may change). Values during
 trading hours are intraday; later runs on the same trade date overwrite them,
-so the stored row ends as the closing value. Writes to data/cse_market.csv,
-one row per trade date.
+so the stored row ends as the closing value. Before the market opens some
+endpoints return an empty body, and on non-trading days there are no trades;
+both are skipped. Writes to data/cse_market.csv, one row per trade date.
 """
 
+import json
 import sys
 from datetime import datetime
 
-from common import SL_TZ, fetch_json, log, upsert_rows
+from common import SL_TZ, fetch_bytes, log, upsert_rows
 
 API = "https://www.cse.lk/api/"
 FIELDNAMES = ["date", "aspi", "aspi_change", "aspi_change_pct",
@@ -19,7 +21,9 @@ FIELDNAMES = ["date", "aspi", "aspi_change", "aspi_change_pct",
 
 
 def post(endpoint):
-    return fetch_json(API + endpoint, data=b"")
+    """POST to a CSE endpoint; None if it has no data (empty body)."""
+    body = fetch_bytes(API + endpoint, data=b"").strip()
+    return json.loads(body) if body else None
 
 
 def trade_date(ms):
@@ -30,6 +34,12 @@ def main():
     log("CSE: fetching ASPI, S&P SL20 and market summary")
     try:
         aspi, snp, summary = post("aspiData"), post("snpData"), post("marketSummery")
+        if None in (aspi, snp, summary):
+            log("CSE: no data yet (market not open); skipped")
+            return 0
+        if not summary.get("trades"):
+            log(f"CSE: no trades on {trade_date(summary['tradeDate'])} (non-trading day); skipped")
+            return 0
         row = {
             "date": trade_date(aspi["timestamp"]),
             "aspi": aspi["value"],
