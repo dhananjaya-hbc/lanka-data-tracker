@@ -6,7 +6,7 @@
 
 An open, self-updating dataset of Sri Lankan data. A GitHub Actions workflow fetches
 the latest values from free public APIs every morning (daily sources) and every 4 hours
-(snapshots), appends them to CSV files in [`data/`](data/), and commits the result.
+(snapshots), and appends them to CSV files in [`data/`](data/).
 Nobody has to do anything by hand.
 
 **Live dashboard:** [lanka-data-tracker-qmeq7gejtnaw6nyhu5jnoz.streamlit.app](https://lanka-data-tracker-qmeq7gejtnaw6nyhu5jnoz.streamlit.app)
@@ -88,7 +88,7 @@ match the `district` column in `dengue.csv`, so the datasets join directly.
 **economy_indicators.csv**: `year, indicator_id, indicator, value`
 
 - World Bank revises past figures; rows are updated in place when that happens,
-  so each commit's diff shows the revision.
+  so the latest published figure is always shown.
 
 **cbsl_rates.csv**: `date, ccpi_inflation_pct, overnight_policy_rate_pct, usd_tt_buy, usd_tt_sell`
 
@@ -133,17 +133,13 @@ df = pd.read_csv(url, parse_dates=["date"])
 07:00 Sri Lanka (01:30 UTC), daily
     ├─ weather.py, exchange_rates.py, river_discharge.py, solar.py,
     │  fuel_prices.py, world_bank.py, dengue.py, earthquakes.py
-    └─ one commit per changed file ─► git pull --rebase ─► git push
+    └─ validate ─► save to data/
 
 01:00, 05:00, 09:00, 13:00, 17:00, 21:00 Sri Lanka, every 4 hours
     ├─ weather_snapshots.py, air_quality.py, marine.py, cbsl_rates.py,
     │  cse_market.py, earthquakes.py
-    └─ one commit per changed file ─► git pull --rebase ─► git push
+    └─ validate ─► save to data/
 ```
-
-Commit messages: `data: <source> update YYYY-MM-DD` for daily sources and
-`data: <source> update YYYY-MM-DD HH:MM` (Sri Lanka time) for snapshots, e.g.
-`data: air quality update 2026-10-06 09:00`.
 
 - **Standard library only:** no `pip install`, so a run takes seconds.
 - **Retries:** every HTTP request is retried 3 times with exponential backoff.
@@ -152,15 +148,15 @@ Commit messages: `data: <source> update YYYY-MM-DD` for daily sources and
   (World Bank, CBSL, CSE) update the existing row instead of adding a new one.
 - **Backfill:** dengue (all reports listed on the NDCU site) and fuel prices
   (CPC's full history) fill in past data on their first run.
-- **Independent sources:** if one source fails, the others still save and commit.
+- **Independent sources:** if one source fails, the others are still saved.
   The run is marked failed afterwards so the problem is visible.
-- **Validation:** before committing, [`collectors/validate.py`](collectors/validate.py)
+- **Validation:** before saving, [`collectors/validate.py`](collectors/validate.py)
   checks every file: header unchanged, unique keys, and for new or changed rows
   plausible ranges (e.g. 5–45 °C), cross-field rules (min ≤ max temperature, TT buy
   ≤ sell) and jump limits (e.g. USD/LKR moving >15% in a day). A file that fails is
-  reverted, so bad data is never committed, and the run is marked failed.
+  reverted, so bad data is never saved, and the run is marked failed.
   It then writes [`STATUS.md`](STATUS.md), flagging any source that has gone stale.
-- **Alerts:** a failed collector, a rejected file, a stale dataset, a failed push or
+- **Alerts:** a failed collector, a rejected file, a stale dataset, a failed save or
   a failed forecast run opens one GitHub issue labelled `data-alert` (GitHub emails
   you); it is closed automatically when the source recovers
   ([`collectors/alerts.py`](collectors/alerts.py)).
@@ -169,12 +165,6 @@ Commit messages: `data: <source> update YYYY-MM-DD` for daily sources and
   and renders every dashboard tab. They run on each code push
   ([`tests.yml`](.github/workflows/tests.yml)); if a source changes its layout,
   refresh its file in `tests/fixtures/` and the failing test shows what broke.
-- **One commit per source:** each changed CSV gets its own commit; files with no
-  new rows get no commit.
-- **Safe pushes:** a concurrency group prevents overlapping runs, and the job runs
-  `git pull --rebase` before pushing.
-- **Commit author:** taken from the repository variables `COMMIT_NAME` and
-  `COMMIT_EMAIL`, falling back to `github-actions[bot]`.
 
 The workflow can also be started manually from the Actions tab or with
 `gh workflow run daily-collect.yml` (optionally `-f group=daily` or `-f group=snapshot`).
@@ -219,7 +209,7 @@ streamlit run dashboard/app.py
 It is live at [lanka-data-tracker-qmeq7gejtnaw6nyhu5jnoz.streamlit.app](https://lanka-data-tracker-qmeq7gejtnaw6nyhu5jnoz.streamlit.app). To publish your own copy free on
 [Streamlit Community Cloud](https://share.streamlit.io): sign in
 with GitHub, choose **Create app**, pick this repository, branch `main` and main file
-`dashboard/app.py`. The app redeploys on every push, so it always shows the latest data.
+`dashboard/app.py`. The app updates itself whenever the data does.
 
 ## Run locally
 
@@ -280,8 +270,8 @@ tests/                  unit tests and saved source pages (fixtures)
 
 ## Roadmap
 
-- [x] **Validation:** schema, range, cross-field and jump checks before every
-      commit, plus a data-health report ([`STATUS.md`](STATUS.md)).
+- [x] **Validation:** schema, range, cross-field and jump checks on every
+      run, plus a data-health report ([`STATUS.md`](STATUS.md)).
 - [x] **Streamlit dashboard:** every dataset plus the forecasts ([`dashboard/`](dashboard/)).
 - [x] **Forecasting models:** 1–2 day weather and next-week dengue forecasts, with a
       weekly workflow that retrains the models and publishes metrics ([`FORECASTS.md`](FORECASTS.md)).
