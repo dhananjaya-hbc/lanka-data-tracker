@@ -6,3 +6,6 @@ venv/
 .DS_Store
 .idea/
 .vscode/
+
+# trained models live in the GitHub Actions cache
+models/*.joblib

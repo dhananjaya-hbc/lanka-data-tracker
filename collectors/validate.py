@@ -77,6 +77,13 @@ RULES = {
                 "usd_tt_buy": R(50, 2000), "usd_tt_sell": R(50, 2000)},
         rules=[("usd_tt_buy <= usd_tt_sell", lambda r: f(r, "usd_tt_buy") <= f(r, "usd_tt_sell"))],
         jump=(None, "usd_tt_buy", 0.10)),
+    "forecasts_weather.csv": dict(
+        key=["target_date", "city", "horizon_days"], fresh=("based_on_date", 3, "daily"),
+        ranges={"horizon_days": R(1, 7), "temp_max_c": R(5, 45), "temp_min_c": R(0, 40),
+                "precipitation_mm": R(0, 700)}),
+    "forecasts_dengue.csv": dict(
+        key=["year", "week", "district"], fresh=("week_start", 42, "weekly"),
+        ranges={"week": R(1, 53), "cases_pred": R(0, 20000)}),
     "cse_market.csv": dict(
         key=["date"], fresh=("date", 7, "trading days"),
         ranges={"aspi": R(1000, 100000), "sp_sl20": R(500, 50000), "trades": R(1, 10000000)},

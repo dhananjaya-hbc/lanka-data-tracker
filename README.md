@@ -96,7 +96,26 @@ match the `district` column in `dengue.csv`, so the datasets join directly.
 - Taken from the JSON endpoints behind cse.lk (unofficial). Runs during trading
   hours store intraday values; later runs overwrite them, so each row ends at the close.
 
-All files are plain CSV with a header row. Load them directly, for example:
+### History
+
+`weather.csv`, `solar.csv` and `river_discharge.csv` were backfilled from
+**1 January 2020** with [`collectors/backfill.py`](collectors/backfill.py) (Open-Meteo
+archive and GloFAS), so they hold years of history, not just days. Backfilled solar
+rows have a blank `uv_index_max` (not available in the archive). Dengue (all of the
+current year) and fuel prices (since 1990) backfill themselves on their first run.
+
+### Forecasts
+
+| File | Contents | Key |
+|---|---|---|
+| [`data/forecasts_weather.csv`](data/forecasts_weather.csv) | Max/min temperature and rainfall for each city, 1 and 2 days after the latest complete day | target_date + city + horizon_days |
+| [`data/forecasts_dengue.csv`](data/forecasts_dengue.csv) | Next week's dengue cases per district; `method` says whether the model or the persistence fallback produced it | year + week + district |
+
+Forecasts are never rewritten once published, so they can be scored against what
+actually happened. Accuracy is in [`FORECASTS.md`](FORECASTS.md).
+
+All files are plain CSV with a header row. Load them directly, for example
+(for a private copy of the repo, read the files from a local clone instead):
 
 ```python
 import pandas as pd
@@ -147,6 +166,47 @@ Commit messages: `data: <source> update YYYY-MM-DD` for daily sources and
 The workflow can also be started manually from the Actions tab or with
 `gh workflow run daily-collect.yml` (optionally `-f group=daily` or `-f group=snapshot`).
 
+## Forecasting
+
+[`.github/workflows/forecast.yml`](.github/workflows/forecast.yml) runs after every
+data collection run and does work only when there is new data:
+
+- **Weather:** gradient-boosted trees (scikit-learn) predict each city's max/min
+  temperature and rainfall 1 and 2 days ahead from the previous 7 days and the season.
+- **Dengue:** predicts next week's cases per district from the last 4 weeks of cases
+  and the last 6 weeks of rainfall, as a week-on-week growth rate.
+- **Weekly retraining** every Sunday at 09:00 Sri Lanka time. Each model is first
+  scored on recent data it never saw against two baselines (*same as today* and
+  *usual for the month*), then refit on all data. Results go to
+  [`FORECASTS.md`](FORECASTS.md) and [`models/metrics.json`](models/metrics.json).
+- Dengue forecasts use the model only while it beats the baseline on held-out weeks;
+  otherwise they fall back to "same as this week".
+- Model files are kept in the GitHub Actions cache rather than git (they would add
+  ~90 MB a year); if the cache is evicted, the workflow retrains them.
+
+This workflow installs pandas and scikit-learn; data collection stays standard-library only.
+
+```bash
+pip install -r forecasting/requirements.txt
+python forecasting/train.py && python forecasting/predict.py
+```
+
+## Dashboard
+
+[`dashboard/app.py`](dashboard/app.py) is a Streamlit app over the CSVs: today's
+conditions across the country, weather and rainfall trends, the dengue heatmap and
+dengue-vs-rain by district, air quality and waves, river flow, fuel prices since 1990,
+exchange rates, the ASPI, World Bank indicators, and the forecasts.
+
+```bash
+pip install -r dashboard/requirements.txt
+streamlit run dashboard/app.py
+```
+
+To publish it free on [Streamlit Community Cloud](https://share.streamlit.io): sign in
+with GitHub, choose **Create app**, pick this repository, branch `main` and main file
+`dashboard/app.py`. The app redeploys on every push, so it always shows the latest data.
+
 ## Run locally
 
 ```bash
@@ -157,6 +217,13 @@ done
 ```
 
 Requires Python 3.9+. No dependencies.
+
+To rebuild the historical backfill (rate-limited, about 80 minutes):
+
+```bash
+python3 collectors/backfill.py fetch --cache /tmp/backfill
+git pull --rebase && python3 collectors/backfill.py merge --cache /tmp/backfill
+```
 
 ## Project structure
 
@@ -179,20 +246,29 @@ collectors/
   cbsl_rates.py         CBSL policy rate, inflation, USD TT rates
   cse_market.py         CSE indices and turnover
   earthquakes.py        earthquakes
-data/                   the datasets (CSV), append-only
+data/                   the datasets (CSV)
+forecasting/
+  model.py              feature building shared by training and prediction
+  train.py              weekly training, evaluation, FORECASTS.md
+  predict.py            publishes forecasts
+  needs_update.py       cheap check: is there new data to forecast from?
+models/metrics.json     latest evaluation results (model files live in the Actions cache)
+dashboard/app.py        Streamlit dashboard
+STATUS.md               data health, updated every run
+FORECASTS.md            forecast accuracy, updated weekly
 .github/workflows/
-  daily-collect.yml   scheduled workflow
+  daily-collect.yml     data collection (daily + every 4 hours)
+  forecast.yml          forecasts + weekly retraining
 ```
 
 ## Roadmap
 
 - [x] **Validation:** schema, range, cross-field and jump checks before every
       commit, plus a data-health report ([`STATUS.md`](STATUS.md)).
-- [ ] **Streamlit dashboard:** interactive charts of weather trends per city and
-      LKR exchange-rate history.
-- [ ] **Forecasting models:** next-day temperature/rainfall and exchange-rate
-      forecasts, with a weekly workflow that automatically retrains the models on the
-      latest data and publishes metrics.
+- [x] **Streamlit dashboard:** every dataset plus the forecasts ([`dashboard/`](dashboard/)).
+- [x] **Forecasting models:** 1–2 day weather and next-week dengue forecasts, with a
+      weekly workflow that retrains the models and publishes metrics ([`FORECASTS.md`](FORECASTS.md)).
+- [ ] **Exchange-rate and ASPI forecasts:** once a few months of daily history exist.
 - [ ] More sources: reservoir levels (Irrigation Department), forecast-vs-actual
       weather archive, tourist arrivals (SLTDA).
 
