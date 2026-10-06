@@ -1,0 +1,27 @@
+year,week,week_start,district,cases_pred,method,based_on_week
+2026,38,2026-09-14,Ampara,9,model,2026-W37
+2026,38,2026-09-14,Anuradhapura,13,model,2026-W37
+2026,38,2026-09-14,Badulla,22,model,2026-W37
+2026,38,2026-09-14,Batticaloa,15,model,2026-W37
+2026,38,2026-09-14,Colombo,173,model,2026-W37
+2026,38,2026-09-14,Galle,60,model,2026-W37
+2026,38,2026-09-14,Gampaha,183,model,2026-W37
+2026,38,2026-09-14,Hambantota,19,model,2026-W37
+2026,38,2026-09-14,Jaffna,17,model,2026-W37
+2026,38,2026-09-14,Kalmunai,27,model,2026-W37
+2026,38,2026-09-14,Kalutara,63,model,2026-W37
+2026,38,2026-09-14,Kandy,145,model,2026-W37
+2026,38,2026-09-14,Kegalle,58,model,2026-W37
+2026,38,2026-09-14,Kilinochchi,1,model,2026-W37
+2026,38,2026-09-14,Kurunegala,31,model,2026-W37
+2026,38,2026-09-14,Mannar,0,model,2026-W37
+2026,38,2026-09-14,Matale,12,model,2026-W37
+2026,38,2026-09-14,Matara,32,model,2026-W37
+2026,38,2026-09-14,Monaragala,13,model,2026-W37
+2026,38,2026-09-14,Mullaitivu,2,model,2026-W37
+2026,38,2026-09-14,Nuwara Eliya,13,model,2026-W37
+2026,38,2026-09-14,Polonnaruwa,10,model,2026-W37
+2026,38,2026-09-14,Puttalam,26,model,2026-W37
+2026,38,2026-09-14,Ratnapura,38,model,2026-W37
+2026,38,2026-09-14,Trincomalee,4,model,2026-W37
+2026,38,2026-09-14,Vavuniya,3,model,2026-W37
