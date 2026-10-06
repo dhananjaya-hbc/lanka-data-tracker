@@ -1,13 +1,14 @@
-"""Collect yesterday's river discharge for major Sri Lankan rivers from the
+"""Collect daily river discharge for major Sri Lankan rivers from the
 Open-Meteo Flood API (GloFAS model).
 
-Runs daily. Writes to data/river_discharge.csv, one row per (date, river).
+Stores yesterday plus any missing day in the previous LOOKBACK_DAYS days.
+Writes to data/river_discharge.csv, one row per (date, river).
 """
 
 import sys
 from datetime import timedelta
 
-from common import append_rows, fetch_open_meteo, log, sl_today
+from common import LOOKBACK_DAYS, append_rows, fetch_open_meteo, log, sl_today
 
 # GloFAS grid cells on each river's main channel, chosen as the cell with the
 # highest median discharge near a lower-basin gauging station.
@@ -28,11 +29,11 @@ FIELDNAMES = ["date", "river", "latitude", "longitude", "discharge_m3s"]
 def main():
     yesterday = sl_today() - timedelta(days=1)
     target = yesterday.isoformat()
-    log(f"River discharge: collecting {target} for {len(RIVERS)} rivers")
+    log(f"River discharge: collecting the {LOOKBACK_DAYS} days to {target} for {len(RIVERS)} rivers")
     try:
         responses = fetch_open_meteo(
             "https://flood-api.open-meteo.com/v1/flood", list(RIVERS.values()),
-            daily="river_discharge", past_days=1, forecast_days=1,
+            daily="river_discharge", past_days=LOOKBACK_DAYS, forecast_days=1,
         )
     except Exception as e:
         log(f"River discharge: FAILED: {e}")
@@ -41,13 +42,12 @@ def main():
     rows, missing = [], []
     for (river, (lat, lon)), resp in zip(RIVERS.items(), responses):
         daily = resp.get("daily", {})
-        times = daily.get("time", [])
-        value = daily["river_discharge"][times.index(target)] if target in times else None
-        if value is None:
+        days = [(d, v) for d, v in zip(daily.get("time", []), daily.get("river_discharge", []))
+                if d <= target and v is not None]
+        if not any(d == target for d, _ in days):
             missing.append(river)
-            continue
-        rows.append({"date": target, "river": river, "latitude": lat,
-                     "longitude": lon, "discharge_m3s": value})
+        rows += [{"date": d, "river": river, "latitude": lat, "longitude": lon,
+                  "discharge_m3s": v} for d, v in days]
 
     written = append_rows("river_discharge.csv", FIELDNAMES, rows, ["date", "river"])
     log(f"River discharge: {written} new row(s) written, {len(rows) - written} duplicate(s) skipped")

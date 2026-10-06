@@ -1,13 +1,15 @@
-"""Collect yesterday's complete daily weather for Sri Lankan cities from Open-Meteo.
+"""Collect complete daily weather for Sri Lankan cities from Open-Meteo.
 
-Writes to data/weather.csv, one row per (date, city).
+Stores yesterday plus any of the previous LOOKBACK_DAYS days that are missing
+(so a dropped workflow run leaves no gap). Writes to data/weather.csv, one row
+per (date, city).
 """
 
 import sys
 import urllib.parse
 from datetime import timedelta
 
-from common import CITIES, append_rows, fetch_json, iso, log, sl_today
+from common import CITIES, LOOKBACK_DAYS, append_rows, fetch_json, iso, log, sl_today
 
 # Open-Meteo daily variable -> CSV column
 VARIABLES = {
@@ -21,40 +23,43 @@ VARIABLES = {
 FIELDNAMES = ["date", "city", "latitude", "longitude", *VARIABLES.values()]
 
 
-def fetch_city(city, lat, lon, target_date):
+def fetch_city(city, lat, lon, today):
+    """Rows for every complete day (before `today`) in the lookback window."""
     params = {
         "latitude": lat,
         "longitude": lon,
         "daily": ",".join(VARIABLES),
-        "past_days": 1,
+        "past_days": LOOKBACK_DAYS,
         "forecast_days": 1,
         "timezone": "Asia/Colombo",
     }
     url = "https://api.open-meteo.com/v1/forecast?" + urllib.parse.urlencode(params)
     daily = fetch_json(url)["daily"]
 
-    target = iso(target_date)
-    if target not in daily["time"]:
-        raise RuntimeError(f"{target} not in response dates {daily['time']}")
-    i = daily["time"].index(target)
+    yesterday = iso(today - timedelta(days=1))
+    if yesterday not in daily["time"]:
+        raise RuntimeError(f"{yesterday} not in response dates {daily['time']}")
 
-    row = {"date": target, "city": city, "latitude": lat, "longitude": lon}
-    for var, col in VARIABLES.items():
-        value = daily[var][i]
-        if value is None:
-            raise RuntimeError(f"missing {var} for {target}")
-        row[col] = value
-    return row
+    rows = []
+    for i, day in enumerate(daily["time"]):
+        values = {col: daily[var][i] for var, col in VARIABLES.items()}
+        if day >= iso(today) or None in values.values():
+            continue  # today is incomplete
+        rows.append({"date": day, "city": city, "latitude": lat, "longitude": lon, **values})
+    if not any(r["date"] == yesterday for r in rows):
+        raise RuntimeError(f"missing values for {yesterday}")
+    return rows
 
 
 def main():
-    yesterday = sl_today() - timedelta(days=1)
-    log(f"Weather: collecting {yesterday} for {len(CITIES)} cities")
+    today = sl_today()
+    log(f"Weather: collecting the {LOOKBACK_DAYS} days to {today - timedelta(days=1)} "
+        f"for {len(CITIES)} cities")
 
     rows, failed = [], []
     for city, (lat, lon) in CITIES.items():
         try:
-            rows.append(fetch_city(city, lat, lon, yesterday))
+            rows += fetch_city(city, lat, lon, today)
             log(f"  ok   {city}")
         except Exception as e:
             failed.append(city)

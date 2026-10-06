@@ -21,6 +21,10 @@ SL_TZ = timezone(timedelta(hours=5, minutes=30), name="Asia/Colombo")
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data")
 
+# Daily collectors re-request this many past days and add any that are
+# missing, so dropped or delayed workflow runs never leave gaps.
+LOOKBACK_DAYS = 7
+
 USER_AGENT = "lanka-data-tracker/1.0 (+https://github.com/dhananjaya-hbc/lanka-data-tracker)"
 
 # City -> (latitude, longitude), shared by the land-based collectors:
