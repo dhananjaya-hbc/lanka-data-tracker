@@ -78,6 +78,10 @@ jobs:
         if: steps.check.outputs.predict == 'true' || steps.check.outputs.train == 'true'
         run: python forecasting/predict.py
 
+      # Rewrites the README's weekly section on Sundays (or if it's a week old).
+      - name: Weekly summary
+        run: python3 collectors/summary.py --weekly
+
       - name: Commit and push
         env:
           COMMIT_NAME: ${{ vars.COMMIT_NAME || 'github-actions[bot]' }}
@@ -95,6 +99,7 @@ jobs:
           commit "models: weekly retrain $day" models/metrics.json FORECASTS.md
           commit "forecast: weather $day" data/forecasts_weather.csv
           commit "forecast: dengue $day" data/forecasts_dengue.csv
+          commit "docs: weekly summary $day" README.md
           if [ -z "$(git log origin/main..HEAD --oneline)" ]; then
             echo "Nothing new to commit."
             exit 0
