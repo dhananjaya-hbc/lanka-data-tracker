@@ -219,7 +219,8 @@ python forecasting/train.py && python forecasting/predict.py
 [`dashboard/app.py`](dashboard/app.py) is a Streamlit app over the CSVs: today's
 conditions across the country, weather and rainfall trends, the dengue heatmap and
 dengue-vs-rain by district, air quality and waves, river flow, fuel prices since 1990,
-exchange rates, the ASPI, World Bank indicators, and the forecasts.
+exchange rates, the ASPI, World Bank indicators and the forecasts, plus a map of
+current conditions and air quality, CSV downloads, and a Data tab listing every file.
 
 ```bash
 pip install -r dashboard/requirements.txt

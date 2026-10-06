@@ -7,12 +7,14 @@ committed. Run locally with:
     streamlit run dashboard/app.py
 """
 
+import itertools
 import json
 import os
 from datetime import timedelta
 
 import altair as alt
 import pandas as pd
+import pydeck as pdk
 import streamlit as st
 
 DATA = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data")
@@ -26,16 +28,23 @@ PALETTES = {
              "surface": "#1a1a19", "seq": ["#104281", "#b7d3f6"]},
 }
 MAX_SERIES = 3
+REPO = "https://github.com/dhananjaya-hbc/lanka-data-tracker"
+RAW = "https://raw.githubusercontent.com/dhananjaya-hbc/lanka-data-tracker/main/data"
+# Map points: one-hue ordinal ramp ends that stay visible on each basemap.
+MAP_RAMP = {"light": ("#86b6ef", "#0d366b"), "dark": ("#184f95", "#cde2fb")}
 
 st.set_page_config(page_title="Lanka Data Tracker", page_icon="🇱🇰", layout="wide")
 
 
-def pal():
+def theme():
     try:
-        mode = st.context.theme.type or "light"
+        return st.context.theme.type or "light"
     except AttributeError:
-        mode = "light"
-    return PALETTES.get(mode, PALETTES["light"])
+        return "light"
+
+
+def pal():
+    return PALETTES.get(theme(), PALETTES["light"])
 
 
 @st.cache_data(ttl=900)
@@ -113,10 +122,43 @@ def bar_chart(df, x, y, x_title, y_title, tips, horizontal=False, sort=None, hei
             .properties(height=height))
 
 
-def show(chart, data, label="Show data"):
+_download_keys = itertools.count()
+
+
+def show(chart, data, label="Show data", name="lanka-data"):
     st.altair_chart(chart, width="stretch")
     with st.expander(label):
         st.dataframe(data, width="stretch", hide_index=True)
+        st.download_button("Download this table (CSV)", data.to_csv(index=False).encode(),
+                           file_name=f"{name}.csv", mime="text/csv", on_click="ignore",
+                           key=f"download_{next(_download_keys)}")
+
+
+def blend(lo, hi, t):
+    """Colour t (0..1) of the way from hex lo to hex hi, as [r, g, b]."""
+    a = [int(lo[i:i + 2], 16) for i in (1, 3, 5)]
+    b = [int(hi[i:i + 2], 16) for i in (1, 3, 5)]
+    return [round(x + (y - x) * t) for x, y in zip(a, b)]
+
+
+def city_map(df, value, label, unit, fmt, phrase):
+    """Cities on a basemap, coloured light-to-dark by `value`, with hover details."""
+    df = df.dropna(subset=[value]).copy()
+    lo, hi = df[value].min(), df[value].max()
+    ramp = MAP_RAMP.get(theme(), MAP_RAMP["light"])
+    df["color"] = [blend(*ramp, (v - lo) / (hi - lo) if hi > lo else 0.5) for v in df[value]]
+    df["shown"] = df[value].map(lambda v: f"{v:{fmt}} {unit}")
+    df["observed"] = df.time.dt.strftime("%d %b %H:%M")
+    surface = [int(pal()["surface"][i:i + 2], 16) for i in (1, 3, 5)]
+    layer = pdk.Layer("ScatterplotLayer", df, get_position=["longitude", "latitude"],
+                      get_fill_color="color", get_radius=7000, radius_min_pixels=7,
+                      stroked=True, get_line_color=surface, line_width_min_pixels=2, pickable=True)
+    st.pydeck_chart(pdk.Deck(layers=[layer], initial_view_state=pdk.ViewState(
+        latitude=7.85, longitude=80.75, zoom=6.4),
+        tooltip={"html": f"<b>{{city}}</b><br/>{label}: {{shown}}<br/>Observed {{observed}}"}),
+        height=520)
+    st.caption(f"Lighter = lower, darker = higher {phrase}: from {lo:{fmt}} to {hi:{fmt}} {unit}. "
+               "Hover a city for its value; the table below lists every city.")
 
 
 def since(df, col, choice):
@@ -136,10 +178,6 @@ def delta(series):
 # --- page -------------------------------------------------------------------
 
 st.title("🇱🇰 Lanka Data Tracker")
-st.caption("An open, self-updating dataset of Sri Lanka, collected automatically "
-           "every day by GitHub Actions. Hover any chart for values; open "
-           "**Show data** under a chart for the table.")
-
 weather = load("weather.csv", ("date",))
 solar = load("solar.csv", ("date",))
 snaps = load("weather_snapshots.csv", ("time",))
@@ -157,7 +195,13 @@ fc_dengue = load("forecasts_dengue.csv", ("week_start",))
 METRICS = os.path.join(DATA, "..", "models", "metrics.json")
 metrics = json.load(open(METRICS)) if os.path.exists(METRICS) else None
 
-tabs = st.tabs(["Overview", "Weather", "Dengue", "Air & sea", "Rivers", "Economy", "Forecasts"])
+updated = snaps.time.max() if not snaps.empty else None
+st.caption("An open, self-updating dataset of Sri Lanka, collected automatically "
+           "every day by GitHub Actions. Hover any chart for values; open "
+           "**Show data** under a chart for the table and a CSV download."
+           + (f" Latest data: **{updated:%a %d %b %Y, %H:%M}** Sri Lanka time." if updated is not None else ""))
+
+tabs = st.tabs(["Overview", "Weather", "Dengue", "Air & sea", "Rivers", "Economy", "Forecasts", "Data"])
 
 # Overview -------------------------------------------------------------------
 with tabs[0]:
@@ -200,6 +244,14 @@ with tabs[0]:
         if not air.empty:
             aq = air.sort_values("time").groupby("city").tail(1)[["city", "us_aqi", "pm2_5"]]
             table = table.merge(aq, on="city", how="left")
+        # radio label -> (column, tooltip label, unit, format, caption phrase)
+        layers = {"Temperature": ("temp_c", "Temperature", "°C", ".1f", "temperature"),
+                  "Feels like": ("feels_like_c", "Feels like", "°C", ".1f", "feels-like temperature")}
+        if "us_aqi" in table:
+            layers["US AQI (air quality)"] = ("us_aqi", "US AQI", "AQI", ".0f", "AQI (worse air)")
+        choice = st.radio("Map shows", list(layers), horizontal=True, key="map_layer")
+        city_map(table.merge(now[["city", "latitude", "longitude"]], on="city"), *layers[choice])
+        if not air.empty:
             bands = [(50, "Good"), (100, "Moderate"), (150, "Unhealthy for sensitive groups"),
                      (200, "Unhealthy"), (300, "Very unhealthy"), (10**6, "Hazardous")]
             table["air"] = table.us_aqi.map(
@@ -405,6 +457,52 @@ with tabs[6]:
                          "climatology_mae": st.column_config.NumberColumn("“Usual for the month” error", format="%.2f"),
                          "skill_vs_best_baseline": st.column_config.NumberColumn(
                              "Improvement vs best baseline", format="percent")})
+
+# Data -----------------------------------------------------------------------
+ABOUT = {
+    "weather.csv": "Daily max/min temperature, rain, wind, humidity per city (since 2020)",
+    "solar.csv": "Daily solar radiation, sunshine and daylight hours per city (since 2020)",
+    "weather_snapshots.csv": "Current conditions per city every 4 hours",
+    "air_quality.csv": "US AQI, PM2.5, PM10, CO, NO₂, SO₂, O₃ per city every 4 hours",
+    "marine.csv": "Waves, swell and sea temperature at 7 coastal points every 4 hours",
+    "river_discharge.csv": "Daily flow of 8 major rivers (since 2020)",
+    "dengue.csv": "Weekly dengue cases by district",
+    "fuel_prices.csv": "Retail fuel prices, every revision since 1990",
+    "exchange_rates.csv": "LKR per unit of 8 currencies, daily",
+    "cbsl_rates.csv": "Inflation, policy rate and USD TT rates from the Central Bank",
+    "cse_market.csv": "ASPI, S&P SL20, turnover and trades per trading day",
+    "economy_indicators.csv": "World Bank annual indicators (GDP, inflation, trade, ...)",
+    "earthquakes.csv": "M3+ earthquakes in the region",
+    "forecasts_weather.csv": "Published 1–2 day weather forecasts per city",
+    "forecasts_dengue.csv": "Published next-week dengue forecasts per district",
+}
+
+
+@st.cache_data(ttl=900)
+def catalogue():
+    rows = []
+    for name in sorted(f for f in os.listdir(DATA) if f.endswith(".csv")):
+        path = os.path.join(DATA, name)
+        with open(path, encoding="utf-8") as fh:
+            count = sum(1 for _ in fh) - 1
+        rows.append({"dataset": name, "about": ABOUT.get(name, ""), "rows": count,
+                     "size_kb": round(os.path.getsize(path) / 1024),
+                     "download": f"{RAW}/{name}", "github": f"{REPO}/blob/main/data/{name}"})
+    return pd.DataFrame(rows)
+
+
+with tabs[7]:
+    st.subheader("Download the datasets")
+    st.caption("Every file is a plain CSV, updated automatically. Data health for each "
+               f"source is in [STATUS.md]({REPO}/blob/main/STATUS.md).")
+    st.dataframe(catalogue(), hide_index=True, width="stretch", column_config={
+        "dataset": "File", "about": "Contents", "rows": st.column_config.NumberColumn("Rows", format="%d"),
+        "size_kb": st.column_config.NumberColumn("Size (KB)", format="%d"),
+        "download": st.column_config.LinkColumn("Download", display_text="CSV ↓"),
+        "github": st.column_config.LinkColumn("GitHub", display_text="view")})
+    st.markdown("Load any file straight into pandas:")
+    st.code(f'import pandas as pd\ndf = pd.read_csv("{RAW}/weather.csv", parse_dates=["date"])',
+            language="python")
 
 st.divider()
 st.caption("Sources: Open-Meteo (CC BY 4.0), ExchangeRate-API, USGS, National Dengue "
