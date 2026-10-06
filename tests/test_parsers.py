@@ -18,6 +18,8 @@ import common  # noqa: E402
 import cse_market  # noqa: E402
 import dengue  # noqa: E402
 import fuel_prices  # noqa: E402
+import pdftext  # noqa: E402
+import tourism  # noqa: E402
 
 
 def fixture(name, mode="r"):
@@ -98,6 +100,30 @@ class DengueTest(unittest.TestCase):
                  (m.groups() for m in dengue.PDF_LINK.finditer(fixture("dengue_weekly_report.html")))}
         self.assertIn((2026, 37), links)
         self.assertIn((2026, 27), links)
+
+
+class TourismTest(unittest.TestCase):
+    def setUp(self):
+        self.cells = pdftext.pdf_cells(fixture("sltda_2026_10_01-04.pdf", "rb"))
+
+    def test_monthly_summary(self):
+        as_of, rows = tourism.parse(self.cells)
+        self.assertEqual(str(as_of), "2026-10-04")
+        by_key = {(r["year"], r["month"]): r for r in rows}
+        self.assertEqual(by_key[(2026, 1)]["arrivals"], 277327)
+        self.assertEqual(by_key[(2018, 12)]["arrivals"], 253169)
+        self.assertNotIn((2026, 11), by_key)  # future month
+
+    def test_current_month_is_partial(self):
+        _, rows = tourism.parse(self.cells)
+        partial = [r for r in rows if r["complete"] == "false"]
+        self.assertEqual([(r["year"], r["month"], r["arrivals"], r["as_of"]) for r in partial],
+                         [(2026, 10, 23349, "2026-10-04")])
+
+    def test_totals_must_match(self):
+        cells = [("999,999" if c == "277,327" else c) for c in self.cells]
+        with self.assertRaisesRegex(RuntimeError, "report total"):
+            tourism.parse(cells)
 
 
 class CseMarketTest(unittest.TestCase):

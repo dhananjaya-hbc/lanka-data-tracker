@@ -77,6 +77,9 @@ RULES = {
                 "usd_tt_buy": R(50, 2000), "usd_tt_sell": R(50, 2000)},
         rules=[("usd_tt_buy <= usd_tt_sell", lambda r: f(r, "usd_tt_buy") <= f(r, "usd_tt_sell"))],
         jump=(None, "usd_tt_buy", 0.10)),
+    "tourism.csv": dict(
+        key=["year", "month"], fresh=("as_of", 21, "weekly reports"),
+        ranges={"month": R(1, 12), "arrivals": R(0, 1000000)}),
     "forecasts_weather.csv": dict(
         key=["target_date", "city", "horizon_days"], fresh=("based_on_date", 3, "daily"),
         ranges={"horizon_days": R(1, 7), "temp_max_c": R(5, 45), "temp_min_c": R(0, 40),

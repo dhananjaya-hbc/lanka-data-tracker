@@ -190,6 +190,7 @@ fuel = load("fuel_prices.csv", ("date",))
 cse = load("cse_market.csv", ("date",))
 cbsl = load("cbsl_rates.csv", ("date",))
 wb = load("economy_indicators.csv")
+tourism = load("tourism.csv")
 fc_weather = load("forecasts_weather.csv", ("target_date", "based_on_date"))
 fc_dengue = load("forecasts_dengue.csv", ("week_start",))
 METRICS = os.path.join(DATA, "..", "models", "metrics.json")
@@ -393,6 +394,27 @@ with tabs[5]:
             st.caption("Each step is a price revision by Ceylon Petroleum Corporation.")
             show(line_chart(fp, "date", "price_lkr_per_litre", "Rs per litre", "product",
                             series_scale("fuel", chosen), fmt=",.2f", interpolate="step-after"), fp)
+    if not tourism.empty:
+        t = tourism[tourism.complete == True].copy()  # noqa: E712  (partial month left out)
+        t["year"] = t.year.astype(str)
+        years = sorted(t.year.unique())
+        months = list(t.sort_values("month").month_name.unique())
+        st.subheader("Tourist arrivals by month")
+        partial = tourism[tourism.complete == False]  # noqa: E712
+        if not partial.empty:
+            p = partial.iloc[0]
+            st.caption(f"{p.month_name} {p.year} so far: {p.arrivals:,} arrivals (to {p.as_of}); "
+                       "it is added to the chart when the month is complete. 2018 is SLTDA's "
+                       "pre-crisis reference year.")
+        scale = series_scale("tourism", years)
+        base = alt.Chart(t).encode(
+            x=alt.X("month_name:O", sort=months, title=None),
+            y=alt.Y("arrivals:Q", title="Arrivals"),
+            color=alt.Color("year:N", scale=scale, legend=alt.Legend(title=None, orient="top")),
+            tooltip=["year", "month_name", alt.Tooltip("arrivals:Q", format=",")])
+        show((base.mark_line(strokeWidth=2)
+              + base.mark_point(filled=True, size=64, stroke=pal()["surface"], strokeWidth=2))
+             .properties(height=300), tourism, name="tourism")
     if not cse.empty:
         st.subheader("All Share Price Index (ASPI)")
         show(line_chart(cse, "date", "aspi", "ASPI", fmt=",.2f"), cse)
@@ -468,6 +490,7 @@ ABOUT = {
     "river_discharge.csv": "Daily flow of 8 major rivers (since 2020)",
     "dengue.csv": "Weekly dengue cases by district",
     "fuel_prices.csv": "Retail fuel prices, every revision since 1990",
+    "tourism.csv": "Tourist arrivals per month (this year, last year, 2018)",
     "exchange_rates.csv": "LKR per unit of 8 currencies, daily",
     "cbsl_rates.csv": "Inflation, policy rate and USD TT rates from the Central Bank",
     "cse_market.csv": "ASPI, S&P SL20, turnover and trades per trading day",

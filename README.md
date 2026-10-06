@@ -52,6 +52,7 @@ match the `district` column in `dengue.csv`, so the datasets join directly.
 | [`data/marine.csv`](data/marine.csv) | Wave height/period/direction, swell height, sea surface temperature off Colombo, Kalpitiya, Jaffna, Trincomalee, Batticaloa, Hambantota, Galle | Every 4 h | time + location | [Open-Meteo Marine](https://open-meteo.com/en/docs/marine-weather-api) |
 | [`data/solar.csv`](data/solar.csv) | Yesterday's solar radiation (kWh/m²), sunshine hours, daylight hours, max UV index per city | Daily | date + city | [Open-Meteo](https://open-meteo.com/) |
 | [`data/dengue.csv`](data/dengue.csv) | Weekly dengue cases and year-to-date total for all 25 districts (Ampara split into Ampara and Kalmunai RDHS) | Weekly (checked daily) | year + week + district | [National Dengue Control Unit](https://www.dengue.health.gov.lk/weekly-report/) weekly reports |
+| [`data/tourism.csv`](data/tourism.csv) | Tourist arrivals per month: this year, last year and the 2018 reference year; the current month updates weekly | Weekly reports (checked daily) | year + month | [Sri Lanka Tourism Development Authority](https://www.sltda.gov.lk/en/statistics) |
 | [`data/fuel_prices.csv`](data/fuel_prices.csv) | Retail price (LKR/litre) of petrol 92/95, auto/super diesel, kerosene, industrial kerosene, furnace oils; full history since 1990 | Each price revision (checked daily) | date + effective_time + product | [Ceylon Petroleum Corporation](https://ceypetco.gov.lk/historical-prices/) |
 | [`data/economy_indicators.csv`](data/economy_indicators.csv) | GDP, GDP growth, GDP per capita, inflation, unemployment, current account, exports, imports, remittances, tourist arrivals, reserves, LKR/USD, population | Annual (checked daily) | year + indicator_id | [World Bank API](https://data.worldbank.org/country/sri-lanka) |
 | [`data/cbsl_rates.csv`](data/cbsl_rates.csv) | CCPI headline inflation, Overnight Policy Rate, USD/LKR TT buy and sell rates | Weekdays | date | [Central Bank of Sri Lanka](https://www.cbsl.gov.lk/) |
@@ -99,6 +100,12 @@ match the `district` column in `dengue.csv`, so the datasets join directly.
 - Every report is checked: the district counts must add up to the report's total.
 - When a report's table is an image, the week is filled from the next week's
   report (which repeats the previous week); `source_report_week` shows this.
+
+**tourism.csv**: `year, month, month_name, arrivals, complete, as_of`
+
+- The current month's row is partial (`complete` = false, `as_of` = the last day
+  counted) and is updated with each weekly report until the month ends. Each
+  report is checked: its months must add up to its own yearly totals.
 
 **fuel_prices.csv**: `date, effective_time, product_code, product, price_lkr_per_litre`
 
@@ -152,7 +159,7 @@ df = pd.read_csv(url, parse_dates=["date"])
 ```
 07:00 Sri Lanka (01:30 UTC), daily
     ├─ weather.py, exchange_rates.py, river_discharge.py, solar.py,
-    │  fuel_prices.py, world_bank.py, dengue.py, earthquakes.py
+    │  fuel_prices.py, world_bank.py, dengue.py, tourism.py, earthquakes.py
     └─ validate ─► save to data/
 
 01:00, 05:00, 09:00, 13:00, 17:00, 21:00 Sri Lanka, every 4 hours
@@ -235,7 +242,7 @@ with GitHub, choose **Create app**, pick this repository, branch `main` and main
 ## Run locally
 
 ```bash
-for c in weather exchange_rates river_discharge solar fuel_prices world_bank dengue \
+for c in weather exchange_rates river_discharge solar fuel_prices world_bank dengue tourism \
          weather_snapshots air_quality marine cbsl_rates cse_market earthquakes; do
   python3 collectors/$c.py
 done
@@ -262,7 +269,9 @@ collectors/
   solar.py              solar radiation and sunshine
   fuel_prices.py        CPC fuel prices
   world_bank.py         World Bank macro indicators
-  dengue.py             NDCU weekly dengue reports (includes a small PDF text reader)
+  dengue.py             NDCU weekly dengue reports
+  tourism.py            SLTDA tourist arrivals
+  pdftext.py            small PDF text reader used by dengue.py and tourism.py
   validate.py           data validation + STATUS.md
   backfill.py           one-off historical backfill (run manually)
   alerts.py             opens/closes GitHub issues for broken sources
@@ -298,8 +307,8 @@ tests/                  unit tests and saved source pages (fixtures)
 - [x] **Forecasting models:** 1–2 day weather and next-week dengue forecasts, with a
       weekly workflow that retrains the models and publishes metrics ([`FORECASTS.md`](FORECASTS.md)).
 - [ ] **Exchange-rate and ASPI forecasts:** once a few months of daily history exist.
-- [ ] More sources: reservoir levels (Irrigation Department), forecast-vs-actual
-      weather archive, tourist arrivals (SLTDA).
+- [ ] More sources: electricity generation mix and hydro reservoir storage (PUCSL),
+      forecast-vs-actual weather archive.
 
 ## License
 
@@ -312,7 +321,8 @@ Weather, air quality, marine and flood data © Open-Meteo, licensed under
 [CC BY 4.0](https://open-meteo.com/en/license) (air quality: Copernicus CAMS; river
 discharge: Copernicus GloFAS). Earthquake data from the U.S. Geological Survey (public
 domain). World Bank data under [CC BY 4.0](https://datacatalog.worldbank.org/public-licenses).
-Dengue figures from the National Dengue Control Unit, Ministry of Health; fuel
+Dengue figures from the National Dengue Control Unit, Ministry of Health; tourist
+arrivals from the Sri Lanka Tourism Development Authority; fuel
 prices from Ceylon Petroleum Corporation; rates from the Central Bank of Sri Lanka;
 market data from the Colombo Stock Exchange. These are published by Sri Lankan
 public bodies; this repository republishes them for convenience with attribution. Exchange rates from [ExchangeRate-API](https://www.exchangerate-api.com) (attribution

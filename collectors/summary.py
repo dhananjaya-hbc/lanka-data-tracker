@@ -103,6 +103,24 @@ def dengue_line():
                          f"most in {top['district']} ({int(top['cases']):,})")]
 
 
+def tourism_line():
+    rows = load("tourism.csv")
+    done = sorted(((int(r["year"]), int(r["month"])) for r in rows if r["complete"] == "true"), reverse=True)
+    if not done:
+        return []
+    by_key = {(int(r["year"]), int(r["month"])): r for r in rows}
+    y, m = done[0]
+    last = int(by_key[(y, m)]["arrivals"])
+    before = by_key.get((y - 1, m))
+    vs = f" ({pct(last, int(before['arrivals'])):+.0f}% on {by_key[(y, m)]['month_name']} {y - 1})" if before else ""
+    text = f"**{last:,}** visitors in {by_key[(y, m)]['month_name']} {y}{vs}"
+    partial = [r for r in rows if r["complete"] == "false"]
+    if partial:
+        p = partial[0]
+        text += f"; {int(p['arrivals']):,} so far in {p['month_name']} (to {fmt_day(p['as_of'])})"
+    return [("✈️ Tourism", text)]
+
+
 def latest_vs_week_ago(rows, value, end, key="date"):
     rows = sorted((r for r in rows if r[key][:10] <= end and r[value]), key=lambda r: r[key])
     if not rows:
@@ -163,7 +181,7 @@ def build(today):
     end = max((r["date"] for r in weather), default=(today - timedelta(days=1)).isoformat())
     start = (date.fromisoformat(end) - timedelta(days=6)).isoformat()
     lines = (weather_lines(start, end) + air_line() + river_line(start, end)
-             + dengue_line() + economy_lines(start, end) + forecast_line())
+             + dengue_line() + tourism_line() + economy_lines(start, end) + forecast_line())
     out = [START, f"## This week in Sri Lanka ({fmt_day(start)} – {fmt_day(end)})", "",
            f"*Generated {today.isoformat()} from the datasets below. "
            f"Explore it all on the [dashboard]({DASHBOARD}).*", "",

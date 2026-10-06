@@ -89,6 +89,12 @@ jobs:
         continue-on-error: true
         run: python3 collectors/world_bank.py
 
+      - name: Collect tourist arrivals
+        id: tourism
+        if: env.RUN_DAILY == 'true'
+        continue-on-error: true
+        run: python3 collectors/tourism.py
+
       - name: Collect dengue cases
         id: dengue
         if: env.RUN_DAILY == 'true'
@@ -145,7 +151,7 @@ jobs:
           # Stamp commits in Sri Lanka time so they land on the right day in
           # the contribution graph (the runner's default is UTC).
           TZ: Asia/Colombo
-          DAILY_SOURCES: " weather exchange_rates river_discharge solar fuel_prices economy_indicators dengue "
+          DAILY_SOURCES: " weather exchange_rates river_discharge solar fuel_prices economy_indicators dengue tourism "
         run: |
           git config user.name "$COMMIT_NAME"
           git config user.email "$COMMIT_EMAIL"
