@@ -1,0 +1,86 @@
+{
+  "trained_at": "2026-10-06T16:02+0530",
+  "weather": [
+    {
+      "target": "temp_max_c",
+      "horizon_days": 1,
+      "test_rows": 9464,
+      "model_mae": 0.8196123561515715,
+      "persistence_mae": 0.9075338123415048,
+      "climatology_mae": 1.3502010310754755,
+      "skill_vs_best_baseline": 0.09687953770349267
+    },
+    {
+      "target": "temp_max_c",
+      "horizon_days": 2,
+      "test_rows": 9438,
+      "model_mae": 0.9596155274179475,
+      "persistence_mae": 1.090389913117186,
+      "climatology_mae": 1.3500368348988334,
+      "skill_vs_best_baseline": 0.11993359817992355
+    },
+    {
+      "target": "temp_min_c",
+      "horizon_days": 1,
+      "test_rows": 9464,
+      "model_mae": 0.5403895647416087,
+      "persistence_mae": 0.6001267962806425,
+      "climatology_mae": 0.7946484774993561,
+      "skill_vs_best_baseline": 0.09954101684721028
+    },
+    {
+      "target": "temp_min_c",
+      "horizon_days": 2,
+      "test_rows": 9438,
+      "model_mae": 0.648709364795116,
+      "persistence_mae": 0.7568976478067387,
+      "climatology_mae": 0.7946295599540332,
+      "skill_vs_best_baseline": 0.14293647671533893
+    },
+    {
+      "target": "precipitation_mm",
+      "horizon_days": 1,
+      "test_rows": 9464,
+      "model_mae": 4.846327003228604,
+      "persistence_mae": 5.403423499577346,
+      "climatology_mae": 5.894360357462468,
+      "skill_vs_best_baseline": 0.10310065394509949
+    },
+    {
+      "target": "precipitation_mm",
+      "horizon_days": 2,
+      "test_rows": 9438,
+      "model_mae": 5.4231312899363875,
+      "persistence_mae": 6.752797202797203,
+      "climatology_mae": 5.89678156294058,
+      "skill_vs_best_baseline": 0.08032352359479211
+    }
+  ],
+  "weather_data": {
+    "rows": 64220,
+    "from": "2020-01-01",
+    "to": "2026-10-05",
+    "test_from": "2025-10-06"
+  },
+  "dengue": {
+    "target": "cases_next_week",
+    "test_rows": 156,
+    "model_mae": 13.742835048990354,
+    "persistence_mae": 23.75,
+    "skill_vs_best_baseline": 0.42135431372672194,
+    "published_method": "model"
+  },
+  "dengue_data": {
+    "rows": 936,
+    "weeks": 36,
+    "test_weeks": [
+      "2026-W31",
+      "2026-W32",
+      "2026-W33",
+      "2026-W34",
+      "2026-W35",
+      "2026-W36"
+    ]
+  },
+  "live": []
+}
