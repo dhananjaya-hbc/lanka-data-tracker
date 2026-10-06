@@ -24,8 +24,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
+      # Latest main, not the triggering commit: a queued run may start after
+      # other runs have pushed.
       - name: Check out repository
         uses: actions/checkout@v5
+        with:
+          ref: main
 
       # GitHub can delay or drop scheduled runs, so every scheduled run from
       # 07:00 Sri Lanka time on also runs the daily collectors. They only add
@@ -165,7 +169,14 @@ jobs:
             echo "Committed $f"
           done
           for attempt in 1 2 3; do
-            git pull --rebase && git push && exit 0
+            if ! git pull --rebase; then
+              # A conflicting change landed first. Give up cleanly; the next run
+              # re-collects (collectors only add what is missing).
+              git rebase --abort || true
+              echo "::error::Rebase conflict with newer commits; this run's data was not pushed"
+              exit 1
+            fi
+            git push && exit 0
             echo "Push attempt $attempt failed; retrying in 10s"
             sleep 10
           done
