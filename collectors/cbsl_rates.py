@@ -26,6 +26,21 @@ PATTERNS = {
 }
 
 
+def parse(page):
+    """Extract the rates from the rate-window HTML: {column: value string}."""
+    text = html_to_text(page)
+    values = {}
+    for col, (pattern, (lo, hi)) in PATTERNS.items():
+        m = re.search(pattern, text)
+        if not m:
+            raise RuntimeError(f"{col} not found; page layout may have changed")
+        value = float(m.group(1))
+        if not lo <= value <= hi:
+            raise RuntimeError(f"{col}={value} outside plausible range {lo}..{hi}")
+        values[col] = m.group(1)
+    return values
+
+
 def main():
     now = datetime.now(SL_TZ)
     if now.weekday() >= 5 or now.hour < 10:
@@ -34,16 +49,7 @@ def main():
 
     log("CBSL rates: fetching rate window")
     try:
-        text = html_to_text(fetch_text(URL))
-        row = {"date": now.date().isoformat()}
-        for col, (pattern, (lo, hi)) in PATTERNS.items():
-            m = re.search(pattern, text)
-            if not m:
-                raise RuntimeError(f"{col} not found; page layout may have changed")
-            value = float(m.group(1))
-            if not lo <= value <= hi:
-                raise RuntimeError(f"{col}={value} outside plausible range {lo}..{hi}")
-            row[col] = m.group(1)
+        row = {"date": now.date().isoformat(), **parse(fetch_text(URL))}
     except Exception as e:
         log(f"CBSL rates: FAILED: {e}")
         return 1

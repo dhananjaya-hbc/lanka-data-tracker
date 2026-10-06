@@ -156,6 +156,15 @@ Commit messages: `data: <source> update YYYY-MM-DD` for daily sources and
   ≤ sell) and jump limits (e.g. USD/LKR moving >15% in a day). A file that fails is
   reverted, so bad data is never committed, and the run is marked failed.
   It then writes [`STATUS.md`](STATUS.md), flagging any source that has gone stale.
+- **Alerts:** a failed collector, a rejected file, a stale dataset, a failed push or
+  a failed forecast run opens one GitHub issue labelled `data-alert` (GitHub emails
+  you); it is closed automatically when the source recovers
+  ([`collectors/alerts.py`](collectors/alerts.py)).
+- **Tests:** [`tests/`](tests/) checks every scraper against saved copies of the real
+  source pages, plus storage, validation and alerts (standard-library `unittest`),
+  and renders every dashboard tab. They run on each code push
+  ([`tests.yml`](.github/workflows/tests.yml)); if a source changes its layout,
+  refresh its file in `tests/fixtures/` and the failing test shows what broke.
 - **One commit per source:** each changed CSV gets its own commit; files with no
   new rows get no commit.
 - **Safe pushes:** a concurrency group prevents overlapping runs, and the job runs
@@ -216,7 +225,7 @@ for c in weather exchange_rates river_discharge solar fuel_prices world_bank den
 done
 ```
 
-Requires Python 3.9+. No dependencies.
+Requires Python 3.9+. No dependencies. Run the tests with `python3 -m unittest discover -s tests`.
 
 To rebuild the historical backfill (rate-limited, about 80 minutes):
 
@@ -240,6 +249,7 @@ collectors/
   dengue.py             NDCU weekly dengue reports (includes a small PDF text reader)
   validate.py           data validation + STATUS.md
   backfill.py           one-off historical backfill (run manually)
+  alerts.py             opens/closes GitHub issues for broken sources
   weather_snapshots.py  4-hourly weather
   air_quality.py        4-hourly air quality
   marine.py             4-hourly sea conditions
@@ -259,6 +269,8 @@ FORECASTS.md            forecast accuracy, updated weekly
 .github/workflows/
   daily-collect.yml     data collection (daily + every 4 hours)
   forecast.yml          forecasts + weekly retraining
+  tests.yml             unit tests + dashboard smoke test on code pushes
+tests/                  unit tests and saved source pages (fixtures)
 ```
 
 ## Roadmap

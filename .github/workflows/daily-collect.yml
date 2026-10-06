@@ -14,6 +14,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: daily-collect
@@ -137,6 +138,7 @@ jobs:
 
       # One commit per changed data file, plus STATUS.md.
       - name: Commit and push new data
+        id: commit
         env:
           COMMIT_NAME: ${{ vars.COMMIT_NAME || 'github-actions[bot]' }}
           COMMIT_EMAIL: ${{ vars.COMMIT_EMAIL || '41898282+github-actions[bot]@users.noreply.github.com' }}
@@ -181,6 +183,16 @@ jobs:
             sleep 10
           done
           exit 1
+
+      # One GitHub issue per broken source (you get an email); closed again
+      # automatically once the source recovers.
+      - name: Open or close alert issues
+        if: always()
+        continue-on-error: true
+        env:
+          STEPS: ${{ toJSON(steps) }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 collectors/alerts.py collect
 
       # Runs after the commit, so saved data is never lost, but still marks
       # the run red so a broken source gets noticed.

@@ -40,8 +40,8 @@ def parse(page):
     for table in re.findall(r"<table\b.*?</table>", page, re.S | re.I):
         rows = [cells(r) for r in re.findall(r"<tr\b.*?</tr>", table, re.S | re.I)]
         rows = [r for r in rows if r]
-        # The page also has a bitumen table; the fuel one has these columns.
-        if not rows or rows[0][0] != "Date" or "LP 92" not in rows[0]:
+        # The page also has a bitumen table (with a "Circular No." column).
+        if not rows or rows[0][0] != "Date" or "Circular No." in rows[0]:
             continue
         header = rows[0][1:]
         unknown = [h for h in header if h not in PRODUCTS]
