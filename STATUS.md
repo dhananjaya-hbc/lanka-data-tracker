@@ -6,11 +6,11 @@ Updated automatically by the data workflow after validation.
 |---|---:|---|---|---|
 | `weather.csv` | 64,246 | 2026-10-06 | daily | ✅ OK |
 | `solar.csv` | 64,246 | 2026-10-06 | daily | ✅ OK |
-| `exchange_rates.csv` | 16 | 2026-10-06 | daily | ✅ OK |
+| `exchange_rates.csv` | 24 | 2026-10-07 | daily | ✅ OK |
 | `river_discharge.csv` | 19,768 | 2026-10-06 | daily | ✅ OK |
-| `weather_snapshots.csv` | 241 | 2026-10-07T04:30 | every 4 h | ✅ OK |
-| `air_quality.csv` | 215 | 2026-10-07T04:30 | every 4 h | ✅ OK |
-| `marine.csv` | 70 | 2026-10-07T04:30 | every 4 h | ✅ OK |
+| `weather_snapshots.csv` | 267 | 2026-10-07T08:00 | every 4 h | ✅ OK |
+| `air_quality.csv` | 241 | 2026-10-07T07:30 | every 4 h | ✅ OK |
+| `marine.csv` | 77 | 2026-10-07T08:00 | every 4 h | ✅ OK |
 | `earthquakes.csv` | 0 | — | when events occur | ⏳ No data yet |
 | `dengue.csv` | 962 | 2026-09-13 | weekly | ✅ OK |
 | `fuel_prices.csv` | 1,559 | 2026-10-01 | on price changes | ✅ OK |
