@@ -1,13 +1,13 @@
 year,indicator_id,indicator,value
-1990,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-3.71364846145228
-1991,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-6.60834436461149
+1990,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-3.71364846145227
+1991,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-6.60834436461148
 1992,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-4.6445676126182
 1993,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-3.69702621240226
-1994,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-6.46387915946705
+1994,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-6.46387915946704
 1995,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-5.90910994846491
 1996,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-4.91199982756748
 1997,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-2.61516855545627
-1998,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-1.44447657761179
+1998,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-1.44447657761178
 1999,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-3.57275187551122
 2000,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-6.28823142949348
 2001,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-1.36821186331088
@@ -22,18 +22,18 @@ year,indicator_id,indicator,value
 2010,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-1.83339431574737
 2011,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-6.81209765681019
 2012,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-5.69099820826854
-2013,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-3.30046822137757
-2014,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-2.40840557196081
+2013,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-3.30046822137756
+2014,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-2.4084055719608
 2015,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-2.21267766608825
 2016,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-1.97999493165089
-2017,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-2.4467643490753
-2018,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-2.96352841915887
-2019,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-2.07126631647205
-2020,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-1.40761495020573
-2021,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-3.70866603299245
-2022,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-1.95359411068218
-2023,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),1.71159541534782
-2024,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),1.21048332599166
+2017,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-2.44676434907529
+2018,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-2.96352841915886
+2019,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-2.07126631647204
+2020,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-1.40761495020571
+2021,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-3.70866603299244
+2022,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),-1.95359411068217
+2023,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),1.71159541534781
+2024,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),1.21195613729145
 1990,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",400775817.9
 1991,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",442093994.1
 1992,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",547805053.7
@@ -69,58 +69,58 @@ year,indicator_id,indicator,value
 2022,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",3819373806.84977
 2023,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",6022594532.62525
 2024,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",6721617581.91647
-1990,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",447030481.606109
+1990,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",447030481.606108
 1991,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",724220186.327437
 1992,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",979865100.612891
-1993,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",1653805493.1912
+1993,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",1653805493.19119
 1994,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",2069716925.84899
 1995,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",2111952624.93954
-1996,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",1984681032.68698
-1997,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",2042319936.5303
-1998,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",1997795167.96533
+1996,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",1984681032.68697
+1997,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",2042319936.53029
+1998,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",1997795167.96532
 1999,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",1653729058.41689
 2000,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",1131355289.18666
 2001,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",1357451866.36814
 2002,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",1705155736.72707
 2003,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",2333781502.23926
-2004,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",2204868879.49586
+2004,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",2204868879.49585
 2005,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",2734967767.26121
-2006,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",2832098098.88232
-2007,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",3518418228.00438
-2008,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",2616559583.33783
-2009,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",5353610216.22721
-2010,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",7195358507.00001
+2006,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",2832098098.88231
+2007,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",3518418228.00437
+2008,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",2616559583.33782
+2009,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",5353610216.2272
+2010,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",7195358507
 2011,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",6739196545.08981
 2012,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",7106460348.66884
-2013,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",7500000871.53903
-2014,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",8210750127.74159
-2015,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",7302096590.22385
+2013,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",7500000871.53902
+2014,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",8210750127.74158
+2015,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",7302096590.22384
 2016,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",6008199165.17799
 2017,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",7959047614.93675
 2018,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",6920825566.09992
 2019,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",7648305273.42442
-2020,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",5663994385.32784
+2020,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",5663994385.32783
 2021,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",3136991506.34787
 2022,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",1896231717.15846
 2023,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",4405117005.00662
-2024,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",6093946546.37437
+2024,FI.RES.TOTL.CD,"Total reserves (includes gold, current US$)",6093946546.37436
 1990,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",21.495252052759
 1991,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",12.1856307214389
-1992,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",11.3834370512206
+1992,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",11.3834370512205
 1993,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",11.7467370174946
-1994,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",8.44871248698348
-1995,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",7.67484873449805
+1994,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",8.44871248698347
+1995,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",7.67484873449804
 1996,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",15.9358310447214
 1997,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",9.57369626405162
 1998,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",9.36424300683229
-1999,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",4.69170563048438
+1999,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",4.69170563048437
 2000,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",6.17627591012045
 2001,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",14.15845579912
 2002,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",9.55103167007251
 2003,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",6.31463787051174
 2004,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",7.57592582995856
 2005,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",11.6396860971118
-2006,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",10.0201836057035
+2006,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",10.0201836057034
 2007,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",15.8421114924843
 2008,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",22.5644955300126
 2009,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",3.46496322106074
@@ -128,18 +128,18 @@ year,indicator_id,indicator,value
 2011,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",6.7167684358854
 2012,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",7.54291373239437
 2013,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",6.90845034828452
-2014,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",3.1790022823606
+2014,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",3.17900228236059
 2015,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",3.76836783062096
-2016,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",3.9588884659307
-2017,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",7.70413767850602
+2016,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",3.95888846593069
+2017,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",7.70413767850601
 2018,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",2.135037737132
 2019,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",3.52839358231811
-2020,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",6.15394508391738
-2021,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",7.01478071238195
+2020,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",6.15394508391737
+2021,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",7.01478071238194
 2022,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",49.7211021114327
-2023,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",16.5411742279832
+2023,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",16.5411742279831
 2024,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",-0.42936004906973
-2025,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",-4.76386036960983
+2025,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",-4.76386036960982
 1990,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),30.1808045148298
 1991,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),28.7410868952181
 1992,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),31.7703740803183
@@ -310,22 +310,22 @@ year,indicator_id,indicator,value
 2023,NY.GDP.PCAP.CD,GDP per capita (current US$),3815.41531767474
 2024,NY.GDP.PCAP.CD,GDP per capita (current US$),4545.36006870612
 2025,NY.GDP.PCAP.CD,GDP per capita (current US$),5002.07904353724
-1990,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",40.0629166666667
+1990,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",40.0629166666666
 1991,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",41.3715
 1992,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",43.829625
 1993,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",48.3221675
-1994,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",49.4151416666667
-1995,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",51.2515891666667
-1996,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",55.2714441666667
+1994,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",49.4151416666666
+1995,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",51.2515891666666
+1996,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",55.2714441666666
 1997,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",58.994605
 1998,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",64.4501183333333
 1999,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",70.63545
-2000,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",77.0051166666667
-2001,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",89.3830133333334
+2000,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",77.0051166666666
+2001,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",89.3830133333333
 2002,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",95.662065
 2003,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",96.5209508333333
 2004,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",101.1944575
-2005,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",100.498051666667
+2005,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",100.498051666666
 2006,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",103.914445833333
 2007,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",110.623233333333
 2008,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",108.333762719298
@@ -333,16 +333,16 @@ year,indicator_id,indicator,value
 2010,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",113.064480448821
 2011,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",110.565207851396
 2012,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",127.60335350681
-2013,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",129.069030932888
+2013,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",129.069030932887
 2014,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",130.564685218829
-2015,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",135.856912797089
-2016,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",145.581667492026
+2015,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",135.856912797088
+2016,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",145.581667492025
 2017,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",152.446413948767
 2018,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",162.464858736778
-2019,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",178.744925045848
-2020,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",185.592557772213
+2019,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",178.744925045847
+2020,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",185.592557772212
 2021,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",198.764316844656
-2022,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",322.632674256475
+2022,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",322.632674256474
 2023,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",327.506533333333
 1991,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",14.661
 1992,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",14.22
@@ -441,3 +441,7 @@ year,indicator_id,indicator,value
 2018,ST.INT.ARVL,"International tourism, number of arrivals",2521000
 2019,ST.INT.ARVL,"International tourism, number of arrivals",2027000
 2020,ST.INT.ARVL,"International tourism, number of arrivals",540000
+2025,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),1.57989637194729
+2025,BX.TRF.PWKR.CD.DT,"Personal remittances, received (current US$)",8305632652.79452
+2024,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",302.116066666666
+2025,PA.NUS.FCRF,"Official exchange rate (LCU per US$, period average)",300.851958333333
