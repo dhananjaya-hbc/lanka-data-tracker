@@ -6,6 +6,8 @@ import os
 import sys
 import tempfile
 import unittest
+import urllib.error
+from unittest import mock
 from datetime import date, timedelta
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -52,6 +54,26 @@ class StorageTest(TempDataDir):
     def test_html_to_text_keeps_cells_separable(self):
         self.assertEqual(common.html_to_text("<td>TT Buy</td><td> 326.1 </td><script>x</script>"),
                          " | TT Buy | 326.1 | ")
+
+
+class RetryTest(unittest.TestCase):
+    def attempts(self, error):
+        calls = []
+
+        def fail(*a, **k):
+            calls.append(1)
+            raise error
+        with mock.patch("urllib.request.urlopen", fail), mock.patch("time.sleep"):
+            with self.assertRaises(RuntimeError):
+                common.fetch_bytes("https://example.invalid/x", retries=3)
+        return len(calls)
+
+    def test_not_found_is_not_retried(self):
+        self.assertEqual(self.attempts(urllib.error.HTTPError("u", 404, "Not Found", {}, None)), 1)
+
+    def test_server_errors_and_timeouts_are_retried(self):
+        self.assertEqual(self.attempts(urllib.error.HTTPError("u", 503, "Unavailable", {}, None)), 4)
+        self.assertEqual(self.attempts(TimeoutError("slow")), 4)
 
 
 class WeatherLookbackTest(unittest.TestCase):

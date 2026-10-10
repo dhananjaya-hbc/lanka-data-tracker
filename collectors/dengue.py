@@ -10,6 +10,10 @@ Writes to data/dengue.csv, one row per (year, week, district). `cases` is the
 count reported for that week (as first published; later reports may revise it
 slightly) and `cumulative_cases` is the year-to-date total.
 
+Report links come from the weekly-report pages and the homepage. If the
+weekly-report page is down (it has returned 404 at times), the usual upload
+address of the next few weeks' reports is checked directly instead.
+
 Some reports embed Table 1 as an image. Table 1 also repeats the previous
 week's counts, so such a week is filled from the following week's report;
 `source_report_week` records which report each row came from.
@@ -19,12 +23,16 @@ import csv
 import os
 import re
 import sys
-from datetime import date
+import urllib.request
+from datetime import date, timedelta
 
-from common import DATA_DIR, append_rows, fetch_bytes, fetch_text, log
+from common import DATA_DIR, USER_AGENT, append_rows, fetch_bytes, fetch_text, log, sl_today
 from pdftext import pdf_cells
 
 LIST_URL = "https://www.dengue.health.gov.lk/weekly-report/"
+HOME_URL = "https://www.dengue.health.gov.lk/"
+UPLOADS = "https://www.dengue.health.gov.lk/wp-content/uploads"
+GUESS_WEEKS = 3  # weeks after the newest known report to look for directly
 MAX_LIST_PAGES = 10
 PDF_LINK = re.compile(
     r"https://[^\"'\s]+/weekly-dengue-update-(\d{4})-week-(\d+)[^\"'\s/]*\.pdf", re.I)
@@ -80,23 +88,83 @@ def checked(parsed, col):
     return table
 
 
-def list_reports():
-    """{(year, week): pdf_url} for every report linked from the NDCU site."""
+def links_on(html):
+    return {(int(y), int(w)): m.group(0) for m in PDF_LINK.finditer(html) for y, w in [m.groups()]}
+
+
+def list_pages():
+    """Reports linked from the weekly-report pages, or None if the list is down."""
     reports = {}
     for page in range(1, MAX_LIST_PAGES + 1):
         url = LIST_URL if page == 1 else f"{LIST_URL}page/{page}/"
         try:
             html = fetch_text(url, retries=1 if page > 1 else 3)
-        except Exception:
+        except Exception as e:
             if page == 1:
-                raise
+                log(f"  weekly-report page unavailable: {e}")
+                return None
             break  # ran past the last page
-        found = {(int(y), int(w)): m.group(0) for m in PDF_LINK.finditer(html)
-                 for y, w in [m.groups()]}
+        found = links_on(html)
         if not set(found) - set(reports):
             break
         for key, link in found.items():
             reports.setdefault(key, link)
+    return reports
+
+
+def pdf_exists(url):
+    req = urllib.request.Request(url, method="HEAD", headers={"User-Agent": USER_AGENT})
+    try:
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            return resp.status == 200 and "pdf" in resp.headers.get("Content-Type", "")
+    except Exception:
+        return False
+
+
+def guess_next(after, today):
+    """Look for the reports of the weeks after `after` = (year, week) at their
+    usual upload address. Reports appear 2-4 weeks after the week ends, in the
+    upload folder of the month they were published."""
+    found = {}
+    start = date.fromisocalendar(after[0], after[1], 1)
+    for k in range(1, GUESS_WEEKS + 1):
+        week_start = start + timedelta(weeks=k)
+        if week_start > today:
+            break
+        year, week, _ = week_start.isocalendar()
+        folders = sorted({(d.year, d.month) for d in
+                          (week_start + timedelta(days=n) for n in range(7, 43, 7)) if d <= today})
+        for fy, fm in folders:
+            for name in (f"Weekly-Dengue-Update-{year}-Week-{week}.pdf",
+                         f"weekly-dengue-update-{year}-week-{week}.pdf"):
+                url = f"{UPLOADS}/{fy}/{fm:02d}/{name}"
+                if pdf_exists(url):
+                    found[(year, week)] = url
+                    break
+            if (year, week) in found:
+                break
+    return found
+
+
+def list_reports(stored):
+    """{(year, week): pdf_url} from every source that is reachable."""
+    reports = list_pages()
+    list_ok = reports is not None
+    reports = reports or {}
+    try:
+        for key, link in links_on(fetch_text(HOME_URL)).items():
+            reports.setdefault(key, link)
+    except Exception as e:
+        log(f"  homepage unavailable: {e}")
+        if not list_ok:
+            raise RuntimeError("neither the weekly-report page nor the homepage could be read")
+    if not list_ok:
+        known = set(reports) | stored
+        if known:
+            guessed = guess_next(max(known), sl_today())
+            log(f"  checked upload addresses directly: found {sorted(guessed) or 'nothing new'}")
+            for key, link in guessed.items():
+                reports.setdefault(key, link)
     return reports
 
 
@@ -121,7 +189,8 @@ def make_rows(year, week, source_week, counts):
 def main():
     log("Dengue: listing NDCU weekly reports")
     try:
-        reports = list_reports()
+        stored = stored_weeks()
+        reports = list_reports(stored)
     except Exception as e:
         log(f"Dengue: FAILED to list reports: {e}")
         return 1
@@ -130,7 +199,7 @@ def main():
         return 1
 
     latest = max(reports)
-    todo = sorted(set(reports) - stored_weeks())
+    todo = sorted(set(reports) - stored)
     log(f"Dengue: {len(reports)} reports listed (latest {latest[0]} week {latest[1]}), "
         f"{len(todo)} new")
 

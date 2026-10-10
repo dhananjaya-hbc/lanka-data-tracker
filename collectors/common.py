@@ -83,7 +83,7 @@ def fetch_open_meteo(base_url, points, **params):
 def fetch_bytes(url, data=None, retries=3, timeout=30, backoff=2.0):
     """GET (or POST, if `data` is given) a URL and return the body as bytes.
     On failure, retry `retries` times with exponential backoff before raising
-    the last error."""
+    the last error. Client errors such as 404 are raised at once."""
     last_err = None
     for attempt in range(1, retries + 2):
         try:
@@ -92,7 +92,10 @@ def fetch_bytes(url, data=None, retries=3, timeout=30, backoff=2.0):
                 return resp.read()
         except (urllib.error.URLError, TimeoutError, ConnectionError) as e:
             last_err = e
-            if attempt > retries:
+            # 4xx (other than timeout/rate limit) won't change on retry
+            permanent = (isinstance(e, urllib.error.HTTPError)
+                         and 400 <= e.code < 500 and e.code not in (408, 429))
+            if attempt > retries or permanent:
                 break
             wait = backoff ** attempt
             log(f"  request failed (attempt {attempt}/{retries + 1}): {e}; retrying in {wait:.0f}s")

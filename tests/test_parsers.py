@@ -9,6 +9,8 @@ import os
 import sys
 import tempfile
 import unittest
+from datetime import date
+from unittest import mock
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "collectors"))
@@ -94,6 +96,29 @@ class DengueTest(unittest.TestCase):
     def test_image_table_is_reported_not_guessed(self):
         with self.assertRaisesRegex(RuntimeError, "Table 1 incomplete"):
             self.table("dengue_2026_w36_image_table.pdf")
+
+    def test_falls_back_when_list_page_is_down(self):
+        pages = {dengue.HOME_URL: fixture("dengue_homepage.html")}
+
+        def fake_fetch(url, **kw):
+            if url in pages:
+                return pages[url]
+            raise RuntimeError(f"giving up on {url}: HTTP Error 404: Not Found")
+
+        week38 = f"{dengue.UPLOADS}/2026/10/Weekly-Dengue-Update-2026-Week-38.pdf"
+        with mock.patch.object(dengue, "fetch_text", fake_fetch), \
+                mock.patch.object(dengue, "pdf_exists", lambda url: url == week38), \
+                mock.patch.object(dengue, "sl_today", return_value=date(2026, 10, 10)):
+            reports = dengue.list_reports(stored={(2026, w) for w in range(1, 38)})
+        self.assertIn((2026, 37), reports)          # linked from the homepage
+        self.assertEqual(reports[(2026, 38)], week38)  # found at its upload address
+
+    def test_everything_down_is_an_error(self):
+        def down(url, **kw):
+            raise RuntimeError("giving up")
+        with mock.patch.object(dengue, "fetch_text", down):
+            with self.assertRaisesRegex(RuntimeError, "neither"):
+                dengue.list_reports(stored=set())
 
     def test_report_links(self):
         links = {(int(y), int(w)) for y, w in
