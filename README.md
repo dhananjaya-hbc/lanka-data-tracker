@@ -15,22 +15,23 @@ Nobody has to do anything by hand.
 whether it is up to date.
 
 <!-- weekly-summary:start -->
-## This week in Sri Lanka (Tue 29 Sep – Mon 5 Oct)
+## This week in Sri Lanka (Sat 3 Oct – Fri 9 Oct)
 
-*Generated 2026-10-07 from the datasets below. Explore it all on the [dashboard](https://lanka-data-tracker-qmeq7gejtnaw6nyhu5jnoz.streamlit.app).*
+*Generated 2026-10-11 from the datasets below. Explore it all on the [dashboard](https://lanka-data-tracker-qmeq7gejtnaw6nyhu5jnoz.streamlit.app).*
 
 | | |
 |---|---|
-| 🌡️ Hottest | **Kilinochchi**, 36.6 °C on Thu 1 Oct |
+| 🌡️ Hottest | **Kilinochchi**, 35.8 °C on Mon 5 Oct |
 | 🌙 Coolest night | **Nuwara Eliya**, 12.6 °C on Sat 3 Oct |
-| 🌧️ Wettest | **Kurunegala**, 88 mm over the week (driest: Mullaitivu, 7 mm) |
-| 🌫️ Air quality | Worst **Gampaha** (average US AQI 83), cleanest Kilinochchi (35) |
-| 🏞️ Rivers | Highest relative flow: **Gin Ganga** at 49 m³/s on Tue 29 Sep (1.4× its usual level) |
+| 🌧️ Wettest | **Kurunegala**, 118 mm over the week (driest: Mullaitivu, 11 mm) |
+| 🌫️ Air quality | Worst **Gampaha** (average US AQI 86), cleanest Kilinochchi (27) |
+| 🏞️ Rivers | Highest relative flow: **Deduru Oya** at 30 m³/s on Wed 7 Oct (2.0× its usual level) |
 | 🦟 Dengue | **1,156 cases** in week 37 (latest report), +0% on the week before; most in Gampaha (218) |
-| 💱 Rupee | **Rs 330.68** per US$ on Mon 5 Oct |
-| 📈 ASPI | **20,644** on Mon 5 Oct |
+| ✈️ Tourism | **158,557** visitors in September 2026 (-0% on September 2025); 40,942 so far in October (to Thu 8 Oct) |
+| 💱 Rupee | **Rs 330.50** per US$ on Fri 9 Oct |
+| 📈 ASPI | **20,317** on Fri 9 Oct |
 | 🏦 Central Bank | Policy rate **8.75%**, inflation 8.0% (CCPI) |
-| ⛽ Petrol 92 | **changed this week** to Rs 414 (from Rs 399) |
+| ⛽ Petrol 92 | Rs 414/L, unchanged since Thu 1 Oct |
 | 🔮 Forecasts | Next-day max temperature model: ±0.82 °C on held-out data ([accuracy](FORECASTS.md)) |
 <!-- weekly-summary:end -->
 
