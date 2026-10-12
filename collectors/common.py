@@ -80,14 +80,24 @@ def fetch_open_meteo(base_url, points, **params):
     return data if isinstance(data, list) else [data]
 
 
-def fetch_bytes(url, data=None, retries=3, timeout=30, backoff=2.0):
+BROWSER_HEADERS = {
+    "User-Agent": ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+                   "(KHTML, like Gecko) Chrome/130.0 Safari/537.36"),
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9",
+}
+
+
+def fetch_bytes(url, data=None, retries=3, timeout=30, backoff=2.0, headers=None):
     """GET (or POST, if `data` is given) a URL and return the body as bytes.
     On failure, retry `retries` times with exponential backoff before raising
-    the last error. Client errors such as 404 are raised at once."""
+    the last error. Client errors such as 404 are raised at once. `headers`
+    replaces the default identifying User-Agent (see BROWSER_HEADERS)."""
     last_err = None
     for attempt in range(1, retries + 2):
         try:
-            req = urllib.request.Request(url, data=data, headers={"User-Agent": USER_AGENT})
+            req = urllib.request.Request(url, data=data,
+                                         headers=headers or {"User-Agent": USER_AGENT})
             with urllib.request.urlopen(req, timeout=timeout) as resp:
                 return resp.read()
         except (urllib.error.URLError, TimeoutError, ConnectionError) as e:

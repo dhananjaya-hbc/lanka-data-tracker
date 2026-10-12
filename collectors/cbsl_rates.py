@@ -11,7 +11,7 @@ import re
 import sys
 from datetime import datetime
 
-from common import SL_TZ, fetch_text, html_to_text, log, upsert_rows
+from common import BROWSER_HEADERS, SL_TZ, fetch_text, html_to_text, log, upsert_rows
 
 URL = "https://www.cbsl.gov.lk/cbsl_custom/param/ratewindow.php"
 FIELDNAMES = ["date", "ccpi_inflation_pct", "overnight_policy_rate_pct",
@@ -49,7 +49,16 @@ def main():
 
     log("CBSL rates: fetching rate window")
     try:
-        row = {"date": now.date().isoformat(), **parse(fetch_text(URL))}
+        try:
+            page = fetch_text(URL)
+        except RuntimeError as e:
+            if "403" not in str(e):
+                raise
+            # CBSL's firewall sometimes refuses automated clients; the page is
+            # public, so retry once the way an ordinary browser asks for it.
+            log("CBSL rates: 403 Forbidden; retrying with browser-style headers")
+            page = fetch_text(URL, headers=BROWSER_HEADERS)
+        row = {"date": now.date().isoformat(), **parse(page)}
     except Exception as e:
         log(f"CBSL rates: FAILED: {e}")
         return 1
