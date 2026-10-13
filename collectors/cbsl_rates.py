@@ -57,7 +57,17 @@ def main():
             # CBSL's firewall sometimes refuses automated clients; the page is
             # public, so retry once the way an ordinary browser asks for it.
             log("CBSL rates: 403 Forbidden; retrying with browser-style headers")
-            page = fetch_text(URL, headers=BROWSER_HEADERS)
+            try:
+                page = fetch_text(URL, headers=BROWSER_HEADERS)
+            except RuntimeError as e2:
+                if "403" not in str(e2):
+                    raise
+                # CBSL is refusing this network (seen from GitHub's servers since
+                # 12 Oct 2026). Nothing we can fix, so warn instead of failing the
+                # run; STATUS.md flags the dataset stale after 5 days.
+                log("::warning::CBSL rates: still 403 Forbidden; CBSL is blocking this network, "
+                    "no row saved today")
+                return 0
         row = {"date": now.date().isoformat(), **parse(page)}
     except Exception as e:
         log(f"CBSL rates: FAILED: {e}")
