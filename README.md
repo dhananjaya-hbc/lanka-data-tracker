@@ -15,24 +15,24 @@ Nobody has to do anything by hand.
 whether it is up to date.
 
 <!-- weekly-summary:start -->
-## This week in Sri Lanka (Sat 3 Oct – Fri 9 Oct)
+## This week in Sri Lanka (Sat 10 Oct – Fri 16 Oct)
 
-*Generated 2026-10-11 from the datasets below. Explore it all on the [dashboard](https://lanka-data-tracker-qmeq7gejtnaw6nyhu5jnoz.streamlit.app).*
+*Generated 2026-10-18 from the datasets below. Explore it all on the [dashboard](https://lanka-data-tracker-qmeq7gejtnaw6nyhu5jnoz.streamlit.app).*
 
 | | |
 |---|---|
-| 🌡️ Hottest | **Kilinochchi**, 35.8 °C on Mon 5 Oct |
-| 🌙 Coolest night | **Nuwara Eliya**, 12.6 °C on Sat 3 Oct |
-| 🌧️ Wettest | **Kurunegala**, 118 mm over the week (driest: Mullaitivu, 11 mm) |
-| 🌫️ Air quality | Worst **Gampaha** (average US AQI 86), cleanest Kilinochchi (27) |
-| 🏞️ Rivers | Highest relative flow: **Deduru Oya** at 30 m³/s on Wed 7 Oct (2.0× its usual level) |
-| 🦟 Dengue | **1,156 cases** in week 37 (latest report), +0% on the week before; most in Gampaha (218) |
-| ✈️ Tourism | **158,557** visitors in September 2026 (-0% on September 2025); 40,942 so far in October (to Thu 8 Oct) |
-| 💱 Rupee | **Rs 330.50** per US$ on Fri 9 Oct |
-| 📈 ASPI | **20,317** on Fri 9 Oct |
+| 🌡️ Hottest | **Jaffna**, 34.5 °C on Sun 11 Oct |
+| 🌙 Coolest night | **Nuwara Eliya**, 12.4 °C on Mon 12 Oct |
+| 🌧️ Wettest | **Trincomalee**, 163 mm over the week (driest: Jaffna, 58 mm) |
+| 🌫️ Air quality | Worst **Colombo** (average US AQI 61), cleanest Vavuniya (26) |
+| 🏞️ Rivers | Highest relative flow: **Kalu Ganga** at 710 m³/s on Fri 16 Oct (4.4× its usual level) |
+| 🦟 Dengue | **1,240 cases** in week 40 (latest report), +2% on the week before; most in Colombo (251) |
+| ✈️ Tourism | **158,557** visitors in September 2026 (-0% on September 2025); 77,868 so far in October (to Thu 15 Oct) |
+| 💱 Rupee | **Rs 330.98** per US$ on Fri 16 Oct (+0.14% in a week) |
+| 📈 ASPI | **20,185** on Fri 16 Oct, -0.6% in a week |
 | 🏦 Central Bank | Policy rate **8.75%**, inflation 8.0% (CCPI) |
 | ⛽ Petrol 92 | Rs 414/L, unchanged since Thu 1 Oct |
-| 🔮 Forecasts | Next-day max temperature model: ±0.82 °C on held-out data ([accuracy](FORECASTS.md)) |
+| 🔮 Forecasts | Next-day max temperature off by **0.7 °C** on average over the last 30 days ([accuracy](FORECASTS.md)) |
 <!-- weekly-summary:end -->
 
 ## Datasets
