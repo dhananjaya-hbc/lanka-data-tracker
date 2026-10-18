@@ -8,15 +8,15 @@ Updated automatically by the data workflow after validation.
 | `solar.csv` | 64,532 | 2026-10-17 | daily | ✅ OK |
 | `exchange_rates.csv` | 104 | 2026-10-18 | daily | ✅ OK |
 | `river_discharge.csv` | 19,856 | 2026-10-17 | daily | ✅ OK |
-| `weather_snapshots.csv` | 1,723 | 2026-10-18T11:45 | every 4 h | ✅ OK |
-| `air_quality.csv` | 1,671 | 2026-10-18T11:30 | every 4 h | ✅ OK |
-| `marine.csv` | 469 | 2026-10-18T11:45 | every 4 h | ✅ OK |
+| `weather_snapshots.csv` | 1,749 | 2026-10-18T13:45 | every 4 h | ✅ OK |
+| `air_quality.csv` | 1,697 | 2026-10-18T13:30 | every 4 h | ✅ OK |
+| `marine.csv` | 476 | 2026-10-18T13:45 | every 4 h | ✅ OK |
 | `earthquakes.csv` | 0 | — | when events occur | ⏳ No data yet |
 | `dengue.csv` | 1,014 | 2026-10-04 | weekly | ✅ OK |
 | `fuel_prices.csv` | 1,559 | 2026-10-01 | on price changes | ✅ OK |
 | `economy_indicators.csv` | 446 | 2025 | annual | ✅ OK |
 | `cbsl_rates.csv` | 4 | 2026-10-09 | weekdays | ⚠️ Stale (9 days old) |
 | `tourism.csv` | 1 | 2026-10-15 | weekly reports | ✅ OK |
-| `forecasts_weather.csv` | 624 | 2026-10-16 | daily | ✅ OK |
+| `forecasts_weather.csv` | 676 | 2026-10-17 | daily | ✅ OK |
 | `forecasts_dengue.csv` | 52 | 2026-10-05 | weekly | ✅ OK |
 | `cse_market.csv` | 10 | 2026-10-16 | trading days | ✅ OK |
