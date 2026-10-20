@@ -67,7 +67,7 @@ RULES = {
         rules=[("cases <= cumulative_cases", lambda r: f(r, "cases") <= f(r, "cumulative_cases"))]),
     "fuel_prices.csv": dict(
         key=["date", "effective_time", "product_code"], blank_key=["effective_time"],
-        fresh=("date", None, "on price changes"),
+        fresh=("date", 120, "on price changes"),
         ranges={"price_lkr_per_litre": R(1, 5000)}),
     "economy_indicators.csv": dict(
         key=["year", "indicator_id"], fresh=("year", None, "annual"), ranges={}),

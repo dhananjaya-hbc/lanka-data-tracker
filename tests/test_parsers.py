@@ -54,6 +54,13 @@ class FuelPricesTest(unittest.TestCase):
     def test_bitumen_table_ignored(self):
         self.assertFalse(any("80/100" in r["product"] for r in self.rows))
 
+    def test_empty_page_is_a_warning_but_layout_change_fails(self):
+        with mock.patch.object(fuel_prices, "fetch_text", return_value="<html></html>"):
+            self.assertEqual(fuel_prices.main(), 0)
+        page = fixture("cpc_historical_prices.html").replace(">LP 92<", ">LP 93<", 1)
+        with mock.patch.object(fuel_prices, "fetch_text", return_value=page):
+            self.assertEqual(fuel_prices.main(), 1)
+
     def test_unknown_column_is_an_error(self):
         page = fixture("cpc_historical_prices.html").replace(">LP 92<", ">LP 93<", 1)
         with self.assertRaisesRegex(RuntimeError, "unexpected columns"):
@@ -112,6 +119,11 @@ class DengueTest(unittest.TestCase):
             reports = dengue.list_reports(stored={(2026, w) for w in range(1, 38)})
         self.assertIn((2026, 37), reports)          # linked from the homepage
         self.assertEqual(reports[(2026, 38)], week38)  # found at its upload address
+
+    def test_site_down_is_a_warning_not_a_failure(self):
+        with mock.patch.object(dengue, "stored_weeks", return_value=set()), \
+                mock.patch.object(dengue, "list_reports", side_effect=RuntimeError("timed out")):
+            self.assertEqual(dengue.main(), 0)
 
     def test_everything_down_is_an_error(self):
         def down(url, **kw):

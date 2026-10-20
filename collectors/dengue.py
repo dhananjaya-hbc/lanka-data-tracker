@@ -192,8 +192,10 @@ def main():
         stored = stored_weeks()
         reports = list_reports(stored)
     except Exception as e:
-        log(f"Dengue: FAILED to list reports: {e}")
-        return 1
+        # NDCU's site is often slow or down for hours; reports are weekly, so the
+        # next run catches up. STATUS.md flags the dataset stale if it lasts.
+        log(f"::warning::Dengue: NDCU site not reachable this run ({e}); will retry")
+        return 0
     if not reports:
         log("Dengue: FAILED: no report links found; page layout may have changed")
         return 1

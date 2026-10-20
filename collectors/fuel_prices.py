@@ -73,6 +73,12 @@ def main():
     try:
         rows = parse(fetch_text(URL))
     except Exception as e:
+        # CPC's site is slow or returns an empty page now and then; prices change
+        # about monthly, so a missed check is retried on the next run. A changed
+        # table layout (unexpected columns, odd dates) is a real failure.
+        if "giving up" in str(e) or "table not found" in str(e):
+            log(f"::warning::Fuel prices: CPC page not usable this run ({e}); will retry")
+            return 0
         log(f"Fuel prices: FAILED: {e}")
         return 1
     rows.sort(key=lambda r: (r["date"], r["effective_time"], r["product_code"]))
