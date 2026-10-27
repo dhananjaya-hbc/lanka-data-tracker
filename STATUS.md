@@ -4,13 +4,13 @@ Updated automatically by the data workflow after validation.
 
 | Dataset | Rows | Latest data | Updates | Status |
 |---|---:|---|---|---|
-| `weather.csv` | 64,740 | 2026-10-25 | daily | ✅ OK |
-| `solar.csv` | 64,740 | 2026-10-25 | daily | ✅ OK |
-| `exchange_rates.csv` | 168 | 2026-10-26 | daily | ✅ OK |
-| `river_discharge.csv` | 19,920 | 2026-10-25 | daily | ✅ OK |
-| `weather_snapshots.csv` | 2,945 | 2026-10-27T04:30 | every 4 h | ✅ OK |
-| `air_quality.csv` | 2,867 | 2026-10-27T04:30 | every 4 h | ✅ OK |
-| `marine.csv` | 798 | 2026-10-27T04:30 | every 4 h | ✅ OK |
+| `weather.csv` | 64,766 | 2026-10-26 | daily | ✅ OK |
+| `solar.csv` | 64,766 | 2026-10-26 | daily | ✅ OK |
+| `exchange_rates.csv` | 176 | 2026-10-27 | daily | ✅ OK |
+| `river_discharge.csv` | 19,928 | 2026-10-26 | daily | ✅ OK |
+| `weather_snapshots.csv` | 2,971 | 2026-10-27T07:45 | every 4 h | ✅ OK |
+| `air_quality.csv` | 2,893 | 2026-10-27T07:30 | every 4 h | ✅ OK |
+| `marine.csv` | 805 | 2026-10-27T07:45 | every 4 h | ✅ OK |
 | `earthquakes.csv` | 0 | — | when events occur | ⏳ No data yet |
 | `dengue.csv` | 1,014 | 2026-10-04 | weekly | ✅ OK |
 | `fuel_prices.csv` | 1,559 | 2026-10-01 | on price changes | ✅ OK |
