@@ -8,9 +8,9 @@ Updated automatically by the data workflow after validation.
 | `solar.csv` | 64,766 | 2026-10-26 | daily | ✅ OK |
 | `exchange_rates.csv` | 176 | 2026-10-27 | daily | ✅ OK |
 | `river_discharge.csv` | 19,928 | 2026-10-26 | daily | ✅ OK |
-| `weather_snapshots.csv` | 3,023 | 2026-10-27T14:45 | every 4 h | ✅ OK |
-| `air_quality.csv` | 2,945 | 2026-10-27T14:30 | every 4 h | ✅ OK |
-| `marine.csv` | 819 | 2026-10-27T14:45 | every 4 h | ✅ OK |
+| `weather_snapshots.csv` | 3,049 | 2026-10-27T22:15 | every 4 h | ✅ OK |
+| `air_quality.csv` | 2,971 | 2026-10-27T21:30 | every 4 h | ✅ OK |
+| `marine.csv` | 826 | 2026-10-27T22:15 | every 4 h | ✅ OK |
 | `earthquakes.csv` | 0 | — | when events occur | ⏳ No data yet |
 | `dengue.csv` | 1,014 | 2026-10-04 | weekly | ✅ OK |
 | `fuel_prices.csv` | 1,559 | 2026-10-01 | on price changes | ✅ OK |
