@@ -15,24 +15,24 @@ Nobody has to do anything by hand.
 whether it is up to date.
 
 <!-- weekly-summary:start -->
-## This week in Sri Lanka (Sat 17 Oct – Fri 23 Oct)
+## This week in Sri Lanka (Sat 24 Oct – Fri 30 Oct)
 
-*Generated 2026-10-25 from the datasets below. Explore it all on the [dashboard](https://lanka-data-tracker-qmeq7gejtnaw6nyhu5jnoz.streamlit.app).*
+*Generated 2026-11-01 from the datasets below. Explore it all on the [dashboard](https://lanka-data-tracker-qmeq7gejtnaw6nyhu5jnoz.streamlit.app).*
 
 | | |
 |---|---|
-| 🌡️ Hottest | **Ampara**, 33.7 °C on Mon 19 Oct |
-| 🌙 Coolest night | **Nuwara Eliya**, 13.0 °C on Sat 17 Oct |
-| 🌧️ Wettest | **Ratnapura**, 167 mm over the week (driest: Hambantota, 46 mm) |
-| 🌫️ Air quality | Worst **Kegalle** (average US AQI 57), cleanest Vavuniya (21) |
-| 🏞️ Rivers | Highest relative flow: **Deduru Oya** at 138 m³/s on Fri 23 Oct (9.0× its usual level) |
+| 🌡️ Hottest | **Batticaloa**, 33.7 °C on Sat 24 Oct |
+| 🌙 Coolest night | **Nuwara Eliya**, 12.2 °C on Fri 30 Oct |
+| 🌧️ Wettest | **Ratnapura**, 154 mm over the week (driest: Wellawaya, 37 mm) |
+| 🌫️ Air quality | Worst **Jaffna** (average US AQI 85), cleanest Hambantota (48) |
+| 🏞️ Rivers | Highest relative flow: **Kala Oya** at 277 m³/s on Wed 28 Oct (55.4× its usual level) |
 | 🦟 Dengue | **1,240 cases** in week 40 (latest report), +2% on the week before; most in Colombo (251) |
-| ✈️ Tourism | **158,557** visitors in September 2026 (-0% on September 2025); 119,805 so far in October (to Thu 22 Oct) |
-| 💱 Rupee | **Rs 332.01** per US$ on Fri 23 Oct (+0.31% in a week) |
-| 📈 ASPI | **19,685** on Fri 23 Oct, -2.5% in a week |
+| ✈️ Tourism | **158,557** visitors in September 2026 (-0% on September 2025); 136,093 so far in October (to Sun 25 Oct) |
+| 💱 Rupee | **Rs 332.17** per US$ on Fri 30 Oct (+0.05% in a week) |
+| 📈 ASPI | **20,142** on Fri 30 Oct, +2.3% in a week |
 | 🏦 Central Bank | Policy rate **8.75%**, inflation 8.0% (CCPI) |
 | ⛽ Petrol 92 | Rs 414/L, unchanged since Thu 1 Oct |
-| 🔮 Forecasts | Next-day max temperature off by **0.9 °C** on average over the last 30 days ([accuracy](FORECASTS.md)) |
+| 🔮 Forecasts | Next-day max temperature off by **1.0 °C** on average over the last 30 days ([accuracy](FORECASTS.md)) |
 <!-- weekly-summary:end -->
 
 ## Datasets
