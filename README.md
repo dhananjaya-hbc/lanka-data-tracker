@@ -15,21 +15,21 @@ Nobody has to do anything by hand.
 whether it is up to date.
 
 <!-- weekly-summary:start -->
-## This week in Sri Lanka (Sat 24 Oct – Fri 30 Oct)
+## This week in Sri Lanka (Sat 31 Oct – Fri 6 Nov)
 
-*Generated 2026-11-01 from the datasets below. Explore it all on the [dashboard](https://lanka-data-tracker-qmeq7gejtnaw6nyhu5jnoz.streamlit.app).*
+*Generated 2026-11-08 from the datasets below. Explore it all on the [dashboard](https://lanka-data-tracker-qmeq7gejtnaw6nyhu5jnoz.streamlit.app).*
 
 | | |
 |---|---|
-| 🌡️ Hottest | **Batticaloa**, 33.7 °C on Sat 24 Oct |
-| 🌙 Coolest night | **Nuwara Eliya**, 12.2 °C on Fri 30 Oct |
-| 🌧️ Wettest | **Ratnapura**, 154 mm over the week (driest: Wellawaya, 37 mm) |
-| 🌫️ Air quality | Worst **Jaffna** (average US AQI 85), cleanest Hambantota (48) |
-| 🏞️ Rivers | Highest relative flow: **Kala Oya** at 277 m³/s on Wed 28 Oct (55.4× its usual level) |
+| 🌡️ Hottest | **Ratnapura**, 33.2 °C on Sun 1 Nov |
+| 🌙 Coolest night | **Nuwara Eliya**, 11.3 °C on Sun 1 Nov |
+| 🌧️ Wettest | **Gampaha**, 112 mm over the week (driest: Jaffna, 16 mm) |
+| 🌫️ Air quality | Worst **Gampaha** (average US AQI 72), cleanest Ampara (29) |
+| 🏞️ Rivers | Highest relative flow: **Kala Oya** at 43 m³/s on Sat 31 Oct (8.7× its usual level) |
 | 🦟 Dengue | **1,240 cases** in week 40 (latest report), +2% on the week before; most in Colombo (251) |
-| ✈️ Tourism | **158,557** visitors in September 2026 (-0% on September 2025); 136,093 so far in October (to Sun 25 Oct) |
-| 💱 Rupee | **Rs 332.17** per US$ on Fri 30 Oct (+0.05% in a week) |
-| 📈 ASPI | **20,142** on Fri 30 Oct, +2.3% in a week |
+| ✈️ Tourism | **168,625** visitors in October 2026 (+2% on October 2025); 28,633 so far in November (to Thu 5 Nov) |
+| 💱 Rupee | **Rs 332.39** per US$ on Fri 6 Nov (+0.07% in a week) |
+| 📈 ASPI | **21,240** on Fri 6 Nov, +5.4% in a week |
 | 🏦 Central Bank | Policy rate **8.75%**, inflation 8.0% (CCPI) |
 | ⛽ Petrol 92 | Rs 414/L, unchanged since Thu 1 Oct |
 | 🔮 Forecasts | Next-day max temperature off by **1.0 °C** on average over the last 30 days ([accuracy](FORECASTS.md)) |
