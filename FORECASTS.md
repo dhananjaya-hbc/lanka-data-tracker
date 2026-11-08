@@ -1,21 +1,21 @@
 # Forecasts
 
-Models retrained 2026-11-01 16:14 (Sri Lanka time) by the weekly forecast workflow. Forecasts are in [`data/forecasts_weather.csv`](data/forecasts_weather.csv) and [`data/forecasts_dengue.csv`](data/forecasts_dengue.csv).
+Models retrained 2026-11-08 16:11 (Sri Lanka time) by the weekly forecast workflow. Forecasts are in [`data/forecasts_weather.csv`](data/forecasts_weather.csv) and [`data/forecasts_dengue.csv`](data/forecasts_dengue.csv).
 
 Each model is scored on recent data it was **not** trained on and compared with two baselines: *persistence* (tomorrow = today) and *climatology* (the usual value for that city and month). **Skill** is the error reduction against the better baseline; negative skill means the model is worse than the baseline.
 
 ## Weather (26 cities)
 
-Trained on 64,896 city-days (2020-01-01 to 2026-10-31); tested on 2025-11-01 to 2026-10-31.
+Trained on 65,078 city-days (2020-01-01 to 2026-11-07); tested on 2025-11-08 to 2026-11-07.
 
 | Target | Days ahead | Model MAE | Persistence MAE | Climatology MAE | Skill |
 |---|---:|---:|---:|---:|---:|
-| Max temperature (°C) | 1 | 0.84 | 0.92 | 1.35 | +9% |
+| Max temperature (°C) | 1 | 0.84 | 0.93 | 1.35 | +9% |
 | Max temperature (°C) | 2 | 0.97 | 1.11 | 1.35 | +13% |
-| Min temperature (°C) | 1 | 0.54 | 0.60 | 0.79 | +10% |
+| Min temperature (°C) | 1 | 0.54 | 0.59 | 0.79 | +10% |
 | Min temperature (°C) | 2 | 0.64 | 0.75 | 0.79 | +15% |
-| Rainfall (mm) | 1 | 4.97 | 5.66 | 5.92 | +12% |
-| Rainfall (mm) | 2 | 5.52 | 7.14 | 5.90 | +6% |
+| Rainfall (mm) | 1 | 5.02 | 5.75 | 5.87 | +13% |
+| Rainfall (mm) | 2 | 5.54 | 7.24 | 5.86 | +5% |
 
 ## Dengue (26 districts, next week's cases)
 
@@ -29,11 +29,11 @@ Trained on 988 district-weeks (38 weeks); tested on 2026-W33, 2026-W34, 2026-W35
 
 | Target | Days ahead | Forecasts | MAE |
 |---|---:|---:|---:|
-| Max temperature (°C) | 1 | 676 | 1.03 |
-| Min temperature (°C) | 1 | 676 | 0.46 |
-| Rainfall (mm) | 1 | 676 | 8.78 |
-| Max temperature (°C) | 2 | 650 | 1.21 |
-| Min temperature (°C) | 2 | 650 | 0.54 |
-| Rainfall (mm) | 2 | 650 | 9.78 |
+| Max temperature (°C) | 1 | 780 | 1.00 |
+| Min temperature (°C) | 1 | 780 | 0.47 |
+| Rainfall (mm) | 1 | 780 | 8.51 |
+| Max temperature (°C) | 2 | 780 | 1.18 |
+| Min temperature (°C) | 2 | 780 | 0.55 |
+| Rainfall (mm) | 2 | 780 | 9.25 |
 
 MAE = mean absolute error, in the target's units (°C, mm, cases).
