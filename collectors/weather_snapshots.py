@@ -1,6 +1,6 @@
 """Snapshot current weather conditions for Sri Lankan cities from Open-Meteo.
 
-Runs every 4 hours. Writes to data/weather_snapshots.csv, one row per (time, city).
+Runs every 6 hours. Writes to data/weather_snapshots.csv, one row per (time, city).
 """
 
 import sys

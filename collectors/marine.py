@@ -1,7 +1,7 @@
 """Snapshot current sea conditions off the Sri Lankan coast from the
 Open-Meteo Marine API.
 
-Runs every 4 hours. Writes to data/marine.csv, one row per (time, location).
+Runs every 6 hours. Writes to data/marine.csv, one row per (time, location).
 """
 
 import sys

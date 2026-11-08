@@ -1,7 +1,7 @@
 """Snapshot current air quality for Sri Lankan cities from the Open-Meteo
 Air Quality API (CAMS model).
 
-Runs every 4 hours. Writes to data/air_quality.csv, one row per (time, city).
+Runs every 6 hours. Writes to data/air_quality.csv, one row per (time, city).
 Pollutant concentrations are in μg/m³.
 """
 

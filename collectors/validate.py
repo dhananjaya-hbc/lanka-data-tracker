@@ -43,17 +43,17 @@ RULES = {
         key=["date", "river"], fresh=("date", 3, "daily"),
         ranges={"discharge_m3s": R(0, 20000)}),
     "weather_snapshots.csv": dict(
-        key=["time", "city"], fresh=("time", 1, "every 4 h"),
+        key=["time", "city"], fresh=("time", 1, "every 6 h"),
         ranges={"temp_c": R(5, 45), "feels_like_c": R(0, 60), "humidity_pct": R(0, 100),
                 "precipitation_mm": R(0, 200), "cloud_cover_pct": R(0, 100),
                 "wind_speed_kmh": R(0, 250), "wind_direction_deg": R(0, 360), "uv_index": R(0, 20)}),
     "air_quality.csv": dict(
-        key=["time", "city"], fresh=("time", 1, "every 4 h"),
+        key=["time", "city"], fresh=("time", 1, "every 6 h"),
         ranges={"us_aqi": R(0, 500), "pm2_5": R(0, 1000), "pm10": R(0, 2000),
                 "carbon_monoxide": R(0, 50000), "nitrogen_dioxide": R(0, 2000),
                 "sulphur_dioxide": R(0, 2000), "ozone": R(0, 1000)}),
     "marine.csv": dict(
-        key=["time", "location"], fresh=("time", 1, "every 4 h"),
+        key=["time", "location"], fresh=("time", 1, "every 6 h"),
         ranges={"wave_height_m": R(0, 20), "wave_period_s": R(0, 30), "wave_direction_deg": R(0, 360),
                 "swell_wave_height_m": R(0, 20), "sea_surface_temp_c": R(20, 36)}),
     "earthquakes.csv": dict(

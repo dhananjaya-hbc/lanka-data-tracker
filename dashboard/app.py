@@ -484,9 +484,9 @@ with tabs[6]:
 ABOUT = {
     "weather.csv": "Daily max/min temperature, rain, wind, humidity per city (since 2020)",
     "solar.csv": "Daily solar radiation, sunshine and daylight hours per city (since 2020)",
-    "weather_snapshots.csv": "Current conditions per city every 4 hours",
-    "air_quality.csv": "US AQI, PM2.5, PM10, CO, NO₂, SO₂, O₃ per city every 4 hours",
-    "marine.csv": "Waves, swell and sea temperature at 7 coastal points every 4 hours",
+    "weather_snapshots.csv": "Current conditions per city every 6 hours",
+    "air_quality.csv": "US AQI, PM2.5, PM10, CO, NO₂, SO₂, O₃ per city every 6 hours",
+    "marine.csv": "Waves, swell and sea temperature at 7 coastal points every 6 hours",
     "river_discharge.csv": "Daily flow of 8 major rivers (since 2020)",
     "dengue.csv": "Weekly dengue cases by district",
     "fuel_prices.csv": "Retail fuel prices, every revision since 1990",

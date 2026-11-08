@@ -5,7 +5,7 @@
 [![Open the dashboard](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://lanka-data-tracker-qmeq7gejtnaw6nyhu5jnoz.streamlit.app)
 
 An open, self-updating dataset of Sri Lankan data. A GitHub Actions workflow fetches
-the latest values from free public APIs every morning (daily sources) and every 4 hours
+the latest values from free public APIs every morning (daily sources) and every 6 hours
 (snapshots), and appends them to CSV files in [`data/`](data/).
 Nobody has to do anything by hand.
 
@@ -48,9 +48,9 @@ match the `district` column in `dengue.csv`, so the datasets join directly.
 | [`data/weather.csv`](data/weather.csv) | Yesterday's max/min temperature (°C), precipitation sum (mm), max wind speed (km/h), mean humidity (%) per city | Daily | date + city | [Open-Meteo](https://open-meteo.com/) |
 | [`data/exchange_rates.csv`](data/exchange_rates.csv) | LKR per 1 unit of USD, EUR, GBP, INR, JPY, AUD, CNY, AED | Daily | date + currency | [ExchangeRate-API open access](https://www.exchangerate-api.com/docs/free) |
 | [`data/river_discharge.csv`](data/river_discharge.csv) | Yesterday's discharge (m³/s) of Kelani, Kalu, Mahaweli, Gin, Nilwala, Walawe, Deduru Oya, Kala Oya | Daily | date + river | [Open-Meteo Flood API](https://open-meteo.com/en/docs/flood-api) (GloFAS) |
-| [`data/weather_snapshots.csv`](data/weather_snapshots.csv) | Current temperature, feels-like, humidity, precipitation, cloud cover, wind, UV index per city | Every 4 h | time + city | [Open-Meteo](https://open-meteo.com/) |
-| [`data/air_quality.csv`](data/air_quality.csv) | US AQI, PM2.5, PM10, CO, NO₂, SO₂, O₃ (μg/m³) per city | Every 4 h | time + city | [Open-Meteo Air Quality](https://open-meteo.com/en/docs/air-quality-api) (CAMS) |
-| [`data/marine.csv`](data/marine.csv) | Wave height/period/direction, swell height, sea surface temperature off Colombo, Kalpitiya, Jaffna, Trincomalee, Batticaloa, Hambantota, Galle | Every 4 h | time + location | [Open-Meteo Marine](https://open-meteo.com/en/docs/marine-weather-api) |
+| [`data/weather_snapshots.csv`](data/weather_snapshots.csv) | Current temperature, feels-like, humidity, precipitation, cloud cover, wind, UV index per city | Every 6 h | time + city | [Open-Meteo](https://open-meteo.com/) |
+| [`data/air_quality.csv`](data/air_quality.csv) | US AQI, PM2.5, PM10, CO, NO₂, SO₂, O₃ (μg/m³) per city | Every 6 h | time + city | [Open-Meteo Air Quality](https://open-meteo.com/en/docs/air-quality-api) (CAMS) |
+| [`data/marine.csv`](data/marine.csv) | Wave height/period/direction, swell height, sea surface temperature off Colombo, Kalpitiya, Jaffna, Trincomalee, Batticaloa, Hambantota, Galle | Every 6 h | time + location | [Open-Meteo Marine](https://open-meteo.com/en/docs/marine-weather-api) |
 | [`data/solar.csv`](data/solar.csv) | Yesterday's solar radiation (kWh/m²), sunshine hours, daylight hours, max UV index per city | Daily | date + city | [Open-Meteo](https://open-meteo.com/) |
 | [`data/dengue.csv`](data/dengue.csv) | Weekly dengue cases and year-to-date total for all 25 districts (Ampara split into Ampara and Kalmunai RDHS) | Weekly (checked daily) | year + week + district | [National Dengue Control Unit](https://www.dengue.health.gov.lk/weekly-report/) weekly reports |
 | [`data/tourism.csv`](data/tourism.csv) | Tourist arrivals per month: this year, last year and the 2018 reference year; the current month updates weekly | Weekly reports (checked daily) | year + month | [Sri Lanka Tourism Development Authority](https://www.sltda.gov.lk/en/statistics) |
@@ -163,7 +163,7 @@ df = pd.read_csv(url, parse_dates=["date"])
     │  fuel_prices.py, world_bank.py, dengue.py, tourism.py, earthquakes.py
     └─ validate ─► save to data/
 
-01:00, 05:00, 09:00, 13:00, 17:00, 21:00 Sri Lanka, every 4 hours
+03:00, 09:00, 15:00, 21:00 Sri Lanka, every 6 hours
     ├─ weather_snapshots.py, air_quality.py, marine.py, cbsl_rates.py,
     │  cse_market.py, earthquakes.py
     └─ validate ─► save to data/
@@ -277,9 +277,9 @@ collectors/
   backfill.py           one-off historical backfill (run manually)
   alerts.py             opens/closes GitHub issues for broken sources
   summary.py            writes the README's weekly summary
-  weather_snapshots.py  4-hourly weather
-  air_quality.py        4-hourly air quality
-  marine.py             4-hourly sea conditions
+  weather_snapshots.py  6-hourly weather
+  air_quality.py        6-hourly air quality
+  marine.py             6-hourly sea conditions
   cbsl_rates.py         CBSL policy rate, inflation, USD TT rates
   cse_market.py         CSE indices and turnover
   earthquakes.py        earthquakes
@@ -294,7 +294,7 @@ dashboard/app.py        Streamlit dashboard
 STATUS.md               data health, updated every run
 FORECASTS.md            forecast accuracy, updated weekly
 .github/workflows/
-  daily-collect.yml     data collection (daily + every 4 hours)
+  daily-collect.yml     data collection (daily + every 6 hours)
   forecast.yml          forecasts + weekly retraining
   tests.yml             unit tests + dashboard smoke test on code pushes
 tests/                  unit tests and saved source pages (fixtures)

@@ -3,7 +3,7 @@ name: Data collection
 on:
   schedule:
     - cron: "30 1 * * *"      # daily sources: 07:00 Sri Lanka time
-    - cron: "30 3-23/4 * * *" # snapshots: every 4 hours (01,05,09,13,17,21:00 Sri Lanka time)
+    - cron: "30 3-23/6 * * *" # snapshots: every 6 hours (03,09,15,21:00 Sri Lanka time)
   workflow_dispatch:
     inputs:
       group:
@@ -151,7 +151,6 @@ jobs:
           # Stamp commits in Sri Lanka time so they land on the right day in
           # the contribution graph (the runner's default is UTC).
           TZ: Asia/Colombo
-          DAILY_SOURCES: " weather exchange_rates river_discharge solar fuel_prices economy_indicators dengue tourism "
         run: |
           git config user.name "$COMMIT_NAME"
           git config user.email "$COMMIT_EMAIL"
@@ -162,20 +161,22 @@ jobs:
           fi
           day=$(TZ=Asia/Colombo date +%F)
           hour=$(TZ=Asia/Colombo date +%H:%M)
+          # One commit per run: list every updated source in the message.
+          names=()
           for f in $changed; do
-            name=$(basename "$f" .csv)
-            case "$DAILY_SOURCES" in
-              *" $name "*) stamp="$day" ;;
-              *) stamp="$day $hour" ;;
-            esac
             git add "$f"
-            if [ "$f" = "STATUS.md" ]; then
-              git commit -q -m "status: data health $day $hour"
-            else
-              git commit -q -m "data: ${name//_/ } update $stamp"
-            fi
-            echo "Committed $f"
+            [ "$f" = "STATUS.md" ] && continue
+            name=$(basename "$f" .csv)
+            names+=("${name//_/ }")
           done
+          if [ ${#names[@]} -eq 0 ]; then
+            msg="status: data health $day $hour"
+          else
+            list=$(printf '%s, ' "${names[@]}")
+            msg="data: update $day $hour (${list%, })"
+          fi
+          git commit -q -m "$msg"
+          echo "Committed: $msg"
           for attempt in 1 2 3; do
             if ! git pull --rebase; then
               # A conflicting change landed first. Give up cleanly; the next run
