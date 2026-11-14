@@ -15,21 +15,21 @@ Nobody has to do anything by hand.
 whether it is up to date.
 
 <!-- weekly-summary:start -->
-## This week in Sri Lanka (Sat 31 Oct – Fri 6 Nov)
+## This week in Sri Lanka (Sat 7 Nov – Fri 13 Nov)
 
-*Generated 2026-11-08 from the datasets below. Explore it all on the [dashboard](https://lanka-data-tracker-qmeq7gejtnaw6nyhu5jnoz.streamlit.app).*
+*Generated 2026-11-15 from the datasets below. Explore it all on the [dashboard](https://lanka-data-tracker-qmeq7gejtnaw6nyhu5jnoz.streamlit.app).*
 
 | | |
 |---|---|
-| 🌡️ Hottest | **Ratnapura**, 33.2 °C on Sun 1 Nov |
-| 🌙 Coolest night | **Nuwara Eliya**, 11.3 °C on Sun 1 Nov |
-| 🌧️ Wettest | **Gampaha**, 112 mm over the week (driest: Jaffna, 16 mm) |
-| 🌫️ Air quality | Worst **Gampaha** (average US AQI 72), cleanest Ampara (29) |
-| 🏞️ Rivers | Highest relative flow: **Kala Oya** at 43 m³/s on Sat 31 Oct (8.7× its usual level) |
+| 🌡️ Hottest | **Ratnapura**, 33.8 °C on Fri 13 Nov |
+| 🌙 Coolest night | **Nuwara Eliya**, 12.8 °C on Sun 8 Nov |
+| 🌧️ Wettest | **Vavuniya**, 150 mm over the week (driest: Matara, 78 mm) |
+| 🌫️ Air quality | Worst **Colombo** (average US AQI 68), cleanest Ampara (26) |
+| 🏞️ Rivers | Highest relative flow: **Kala Oya** at 68 m³/s on Thu 12 Nov (13.4× its usual level) |
 | 🦟 Dengue | **1,240 cases** in week 40 (latest report), +2% on the week before; most in Colombo (251) |
-| ✈️ Tourism | **168,625** visitors in October 2026 (+2% on October 2025); 28,633 so far in November (to Thu 5 Nov) |
-| 💱 Rupee | **Rs 332.39** per US$ on Fri 6 Nov (+0.07% in a week) |
-| 📈 ASPI | **21,240** on Fri 6 Nov, +5.4% in a week |
+| ✈️ Tourism | **168,625** visitors in October 2026 (+2% on October 2025); 71,973 so far in November (to Wed 11 Nov) |
+| 💱 Rupee | **Rs 332.43** per US$ on Fri 13 Nov (+0.01% in a week) |
+| 📈 ASPI | **22,024** on Fri 13 Nov, +3.7% in a week |
 | 🏦 Central Bank | Policy rate **8.75%**, inflation 8.0% (CCPI) |
 | ⛽ Petrol 92 | Rs 414/L, unchanged since Thu 1 Oct |
 | 🔮 Forecasts | Next-day max temperature off by **1.0 °C** on average over the last 30 days ([accuracy](FORECASTS.md)) |
