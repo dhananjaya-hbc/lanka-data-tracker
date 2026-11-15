@@ -1,66 +1,66 @@
 {
-  "trained_at": "2026-11-08T16:11+0530",
+  "trained_at": "2026-11-15T16:54+0530",
   "weather": [
     {
       "target": "temp_max_c",
       "horizon_days": 1,
       "test_rows": 9464,
-      "model_mae": 0.8387288288064826,
-      "persistence_mae": 0.9261622992392224,
-      "climatology_mae": 1.3486444881494506,
-      "skill_vs_best_baseline": 0.09440404830185845
+      "model_mae": 0.840358719163837,
+      "persistence_mae": 0.9312975486052408,
+      "climatology_mae": 1.3509702438877194,
+      "skill_vs_best_baseline": 0.09764744852770046
     },
     {
       "target": "temp_max_c",
       "horizon_days": 2,
       "test_rows": 9438,
-      "model_mae": 0.9699006274944457,
-      "persistence_mae": 1.113329095147277,
-      "climatology_mae": 1.3480784247527318,
-      "skill_vs_best_baseline": 0.1288284553758633
+      "model_mae": 0.9676552352881026,
+      "persistence_mae": 1.1130006357279085,
+      "climatology_mae": 1.3513508564651484,
+      "skill_vs_best_baseline": 0.1305887847447178
     },
     {
       "target": "temp_min_c",
       "horizon_days": 1,
       "test_rows": 9464,
-      "model_mae": 0.5365628621197229,
-      "persistence_mae": 0.5943998309382925,
-      "climatology_mae": 0.7921164105063532,
-      "skill_vs_best_baseline": 0.09730313806999369
+      "model_mae": 0.535858333224579,
+      "persistence_mae": 0.5938820794590025,
+      "climatology_mae": 0.8012970626716733,
+      "skill_vs_best_baseline": 0.097702470307372
     },
     {
       "target": "temp_min_c",
       "horizon_days": 2,
       "test_rows": 9438,
-      "model_mae": 0.6384996180378336,
-      "persistence_mae": 0.750519177791905,
-      "climatology_mae": 0.792528712180215,
-      "skill_vs_best_baseline": 0.1492560924074492
+      "model_mae": 0.6436992402538594,
+      "persistence_mae": 0.7505721551176097,
+      "climatology_mae": 0.8022554133745677,
+      "skill_vs_best_baseline": 0.14238859533365456
     },
     {
       "target": "precipitation_mm",
       "horizon_days": 1,
       "test_rows": 9464,
-      "model_mae": 5.02213431212705,
-      "persistence_mae": 5.75158495350803,
-      "climatology_mae": 5.86904054054991,
-      "skill_vs_best_baseline": 0.12682602226644857
+      "model_mae": 5.043955513930586,
+      "persistence_mae": 5.7854289940828405,
+      "climatology_mae": 5.887875308600896,
+      "skill_vs_best_baseline": 0.12816222978634972
     },
     {
       "target": "precipitation_mm",
       "horizon_days": 2,
       "test_rows": 9438,
-      "model_mae": 5.537235106464972,
-      "persistence_mae": 7.24122695486332,
-      "climatology_mae": 5.8592397277622235,
-      "skill_vs_best_baseline": 0.05495672412438268
+      "model_mae": 5.5687040964152,
+      "persistence_mae": 7.296863742318288,
+      "climatology_mae": 5.873098740193765,
+      "skill_vs_best_baseline": 0.051828626972568514
     }
   ],
   "weather_data": {
-    "rows": 65078,
+    "rows": 65260,
     "from": "2020-01-01",
-    "to": "2026-11-07",
-    "test_from": "2025-11-08"
+    "to": "2026-11-14",
+    "test_from": "2025-11-15"
   },
   "dengue": {
     "target": "cases_next_week",
@@ -87,37 +87,37 @@
       "target": "temp_max_c",
       "horizon_days": 1,
       "forecasts": 780,
-      "mae": 1.0014102564102565
+      "mae": 1.0465384615384616
     },
     {
       "target": "temp_min_c",
       "horizon_days": 1,
       "forecasts": 780,
-      "mae": 0.46923076923076923
+      "mae": 0.4569230769230769
     },
     {
       "target": "precipitation_mm",
       "horizon_days": 1,
       "forecasts": 780,
-      "mae": 8.511794871794871
+      "mae": 8.771153846153846
     },
     {
       "target": "temp_max_c",
       "horizon_days": 2,
       "forecasts": 780,
-      "mae": 1.1760256410256413
+      "mae": 1.1615384615384616
     },
     {
       "target": "temp_min_c",
       "horizon_days": 2,
       "forecasts": 780,
-      "mae": 0.5458974358974359
+      "mae": 0.5388461538461539
     },
     {
       "target": "precipitation_mm",
       "horizon_days": 2,
       "forecasts": 780,
-      "mae": 9.24974358974359
+      "mae": 9.65205128205128
     }
   ]
 }
