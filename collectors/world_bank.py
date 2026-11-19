@@ -34,7 +34,7 @@ def main():
     rows, failed = [], []
     for ind in INDICATORS:
         try:
-            meta, records = fetch_json(URL.format(ind))[:2]
+            meta, records = fetch_json(URL.format(ind), timeout=60)[:2]
             for r in records or []:
                 if r["value"] is not None:
                     rows.append({"year": r["date"], "indicator_id": ind,
