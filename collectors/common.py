@@ -88,7 +88,7 @@ BROWSER_HEADERS = {
 }
 
 
-def fetch_bytes(url, data=None, retries=3, timeout=30, backoff=2.0, headers=None):
+def fetch_bytes(url, data=None, retries=4, timeout=30, backoff=2.0, headers=None):
     """GET (or POST, if `data` is given) a URL and return the body as bytes.
     On failure, retry `retries` times with exponential backoff before raising
     the last error. Client errors such as 404 are raised at once. `headers`
