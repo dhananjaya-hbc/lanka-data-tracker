@@ -15,22 +15,22 @@ Nobody has to do anything by hand.
 whether it is up to date.
 
 <!-- weekly-summary:start -->
-## This week in Sri Lanka (Sat 7 Nov – Fri 13 Nov)
+## This week in Sri Lanka (Sat 14 Nov – Fri 20 Nov)
 
-*Generated 2026-11-15 from the datasets below. Explore it all on the [dashboard](https://lanka-data-tracker-qmeq7gejtnaw6nyhu5jnoz.streamlit.app).*
+*Generated 2026-11-22 from the datasets below. Explore it all on the [dashboard](https://lanka-data-tracker-qmeq7gejtnaw6nyhu5jnoz.streamlit.app).*
 
 | | |
 |---|---|
-| 🌡️ Hottest | **Ratnapura**, 33.8 °C on Fri 13 Nov |
-| 🌙 Coolest night | **Nuwara Eliya**, 12.8 °C on Sun 8 Nov |
-| 🌧️ Wettest | **Vavuniya**, 150 mm over the week (driest: Matara, 78 mm) |
-| 🌫️ Air quality | Worst **Colombo** (average US AQI 68), cleanest Ampara (26) |
-| 🏞️ Rivers | Highest relative flow: **Kala Oya** at 68 m³/s on Thu 12 Nov (13.4× its usual level) |
+| 🌡️ Hottest | **Ratnapura**, 33.3 °C on Fri 20 Nov |
+| 🌙 Coolest night | **Nuwara Eliya**, 11.3 °C on Thu 19 Nov |
+| 🌧️ Wettest | **Galle**, 48 mm over the week (driest: Ratnapura, 6 mm) |
+| 🌫️ Air quality | Worst **Jaffna** (average US AQI 129), cleanest Nuwara Eliya (83) |
+| 🏞️ Rivers | Highest relative flow: **Kala Oya** at 67 m³/s on Sat 14 Nov (13.2× its usual level) |
 | 🦟 Dengue | **1,240 cases** in week 40 (latest report), +2% on the week before; most in Colombo (251) |
-| ✈️ Tourism | **168,625** visitors in October 2026 (+2% on October 2025); 71,973 so far in November (to Wed 11 Nov) |
-| 💱 Rupee | **Rs 332.43** per US$ on Fri 13 Nov (+0.01% in a week) |
-| 📈 ASPI | **22,024** on Fri 13 Nov, +3.7% in a week |
-| 🏦 Central Bank | Policy rate **8.75%**, inflation 8.0% (CCPI) |
+| ✈️ Tourism | **168,625** visitors in October 2026 (+2% on October 2025); 124,362 so far in November (to Wed 18 Nov) |
+| 💱 Rupee | **Rs 332.64** per US$ on Fri 20 Nov (+0.06% in a week) |
+| 📈 ASPI | **21,370** on Fri 20 Nov, -3.0% in a week |
+| 🏦 Central Bank | Policy rate **8.75%**, inflation 8.3% (CCPI) |
 | ⛽ Petrol 92 | Rs 414/L, unchanged since Thu 1 Oct |
 | 🔮 Forecasts | Next-day max temperature off by **1.0 °C** on average over the last 30 days ([accuracy](FORECASTS.md)) |
 <!-- weekly-summary:end -->
