@@ -1,66 +1,66 @@
 {
-  "trained_at": "2026-11-15T16:54+0530",
+  "trained_at": "2026-11-22T17:21+0530",
   "weather": [
     {
       "target": "temp_max_c",
       "horizon_days": 1,
       "test_rows": 9464,
-      "model_mae": 0.840358719163837,
-      "persistence_mae": 0.9312975486052408,
-      "climatology_mae": 1.3509702438877194,
-      "skill_vs_best_baseline": 0.09764744852770046
+      "model_mae": 0.8414349057292432,
+      "persistence_mae": 0.9314560439560439,
+      "climatology_mae": 1.3636217070575984,
+      "skill_vs_best_baseline": 0.09664561071982147
     },
     {
       "target": "temp_max_c",
       "horizon_days": 2,
       "test_rows": 9438,
-      "model_mae": 0.9676552352881026,
-      "persistence_mae": 1.1130006357279085,
-      "climatology_mae": 1.3513508564651484,
-      "skill_vs_best_baseline": 0.1305887847447178
+      "model_mae": 0.9823020955717183,
+      "persistence_mae": 1.1170586988768807,
+      "climatology_mae": 1.3653728566465604,
+      "skill_vs_best_baseline": 0.12063520336097833
     },
     {
       "target": "temp_min_c",
       "horizon_days": 1,
       "test_rows": 9464,
-      "model_mae": 0.535858333224579,
-      "persistence_mae": 0.5938820794590025,
-      "climatology_mae": 0.8012970626716733,
-      "skill_vs_best_baseline": 0.097702470307372
+      "model_mae": 0.5414126949683222,
+      "persistence_mae": 0.5985207100591715,
+      "climatology_mae": 0.8070932677174093,
+      "skill_vs_best_baseline": 0.09541526989968885
     },
     {
       "target": "temp_min_c",
       "horizon_days": 2,
       "test_rows": 9438,
-      "model_mae": 0.6436992402538594,
-      "persistence_mae": 0.7505721551176097,
-      "climatology_mae": 0.8022554133745677,
-      "skill_vs_best_baseline": 0.14238859533365456
+      "model_mae": 0.6445927055149503,
+      "persistence_mae": 0.7533481669845307,
+      "climatology_mae": 0.8080702759755198,
+      "skill_vs_best_baseline": 0.14436281421497577
     },
     {
       "target": "precipitation_mm",
       "horizon_days": 1,
       "test_rows": 9464,
-      "model_mae": 5.043955513930586,
-      "persistence_mae": 5.7854289940828405,
-      "climatology_mae": 5.887875308600896,
-      "skill_vs_best_baseline": 0.12816222978634972
+      "model_mae": 4.96451603909591,
+      "persistence_mae": 5.6264370245139474,
+      "climatology_mae": 5.88797844022126,
+      "skill_vs_best_baseline": 0.11764478701780523
     },
     {
       "target": "precipitation_mm",
       "horizon_days": 2,
       "test_rows": 9438,
-      "model_mae": 5.5687040964152,
-      "persistence_mae": 7.296863742318288,
-      "climatology_mae": 5.873098740193765,
-      "skill_vs_best_baseline": 0.051828626972568514
+      "model_mae": 5.456852310041696,
+      "persistence_mae": 7.052468743377834,
+      "climatology_mae": 5.864550810531936,
+      "skill_vs_best_baseline": 0.06951913516685182
     }
   ],
   "weather_data": {
-    "rows": 65260,
+    "rows": 65442,
     "from": "2020-01-01",
-    "to": "2026-11-14",
-    "test_from": "2025-11-15"
+    "to": "2026-11-21",
+    "test_from": "2025-11-22"
   },
   "dengue": {
     "target": "cases_next_week",
@@ -86,38 +86,38 @@
     {
       "target": "temp_max_c",
       "horizon_days": 1,
-      "forecasts": 780,
-      "mae": 1.0465384615384616
+      "forecasts": 779,
+      "mae": 1.0717586649550706
     },
     {
       "target": "temp_min_c",
       "horizon_days": 1,
-      "forecasts": 780,
-      "mae": 0.4569230769230769
+      "forecasts": 779,
+      "mae": 0.509242618741977
     },
     {
       "target": "precipitation_mm",
       "horizon_days": 1,
-      "forecasts": 780,
-      "mae": 8.771153846153846
+      "forecasts": 779,
+      "mae": 8.012965340179719
     },
     {
       "target": "temp_max_c",
       "horizon_days": 2,
-      "forecasts": 780,
-      "mae": 1.1615384615384616
+      "forecasts": 779,
+      "mae": 1.1942233632862644
     },
     {
       "target": "temp_min_c",
       "horizon_days": 2,
-      "forecasts": 780,
-      "mae": 0.5388461538461539
+      "forecasts": 779,
+      "mae": 0.5897304236200257
     },
     {
       "target": "precipitation_mm",
       "horizon_days": 2,
-      "forecasts": 780,
-      "mae": 9.65205128205128
+      "forecasts": 779,
+      "mae": 8.89602053915276
     }
   ]
 }
